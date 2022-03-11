@@ -13,6 +13,8 @@ public class UserDao extends AbstractDao<User, Integer>{
     private static String SELECT_ALL_USERS = "select * from users";
     private static String SELECT_USER_BY_ID = "select * from users where user_id = ?";
     private static String DELETE_USER_BY_ID = "delete from users where user_id = ?";
+    private static String INSERT_USER = "insert into users values(uid_seq.NEXTVAL, ?, ?, ?)";
+    private static String UPDATE_USER_BY_ID = "update users set login = ?, password = ?, access_lvl = ? where id = ?";
 
 
     @Override
@@ -32,8 +34,19 @@ public class UserDao extends AbstractDao<User, Integer>{
     }
 
     @Override
-    public User update(User entity) {
-        return null;
+    public boolean update(User user) throws SQLException {
+        if (user.getId()==null){
+            return false;
+        }
+        PreparedStatement pr = connection.prepareStatement(UPDATE_USER_BY_ID);
+        User oldUser = getEntityById(user.getId());
+        pr.setString(1, (user.getName()==null)?oldUser.getName():user.getName());
+        pr.setString(2, (user.getPassword()==null)?oldUser.getPassword().toString():user.getPassword().toString());
+        pr.setInt(3, (user.getAccessLevel()==null)?oldUser.getAccessLevel():user.getAccessLevel());
+        pr.setInt(4, user.getId());
+        int result = pr.executeUpdate();
+
+        return result > 0;
     }
 
     @Override
@@ -62,7 +75,12 @@ public class UserDao extends AbstractDao<User, Integer>{
     }
 
     @Override
-    public boolean create(User entity) {
-        return false;
+    public boolean create(User user) throws SQLException {
+        PreparedStatement pr = connection.prepareStatement(INSERT_USER);
+        pr.setString(1, user.getName());
+        pr.setString(2, Integer.toString(user.getPassword()));
+        pr.setInt(3, user.getAccessLevel());
+        int result = pr.executeUpdate();
+        return result > 0;
     }
 }

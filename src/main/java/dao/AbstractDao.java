@@ -22,13 +22,13 @@ public abstract class AbstractDao<E, K> {
 
     public abstract List<E> getAll() throws SQLException;
 
-    public abstract E update(E entity);
+    public abstract boolean update(E entity) throws SQLException;
 
     public abstract E getEntityById(K id) throws SQLException;
 
     public abstract boolean delete(K id) throws SQLException;
 
-    public abstract boolean create(E entity);
+    public abstract boolean create(E entity) throws SQLException;
 
 
 }
