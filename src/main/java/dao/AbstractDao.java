@@ -10,7 +10,7 @@ public abstract class AbstractDao<E, K> {
     private static final String USER = "arbuser";
     private static final String PASSWORD = "1234";
 
-    private static Connection connection;
+    protected static Connection connection;
 
     static {
         try {
@@ -20,13 +20,13 @@ public abstract class AbstractDao<E, K> {
         }
     }
 
-    public abstract List<E> getAll();
+    public abstract List<E> getAll() throws SQLException;
 
     public abstract E update(E entity);
 
-    public abstract E getEntityById(K id);
+    public abstract E getEntityById(K id) throws SQLException;
 
-    public abstract boolean delete(K id);
+    public abstract boolean delete(K id) throws SQLException;
 
     public abstract boolean create(E entity);
 
