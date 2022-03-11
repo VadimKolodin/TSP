@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class User implements Serializable {
-    private int id;
+    private Integer id;
     private String name;
-    private int password;
-    private int accessLevel;
+    private Integer password;
+    private Integer accessLevel;
 
     public User(int id, String name, int password, int accessLevel) {
         this.id = id;
@@ -16,11 +16,11 @@ public class User implements Serializable {
         this.accessLevel = accessLevel;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -32,19 +32,19 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public int getPassword() {
+    public Integer getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(Integer password) {
         this.password = password;
     }
 
-    public int getAccessLevel() {
+    public Integer getAccessLevel() {
         return accessLevel;
     }
 
-    public void setAccessLevel(int accessLevel) {
+    public void setAccessLevel(Integer accessLevel) {
         this.accessLevel = accessLevel;
     }
 
