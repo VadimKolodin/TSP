@@ -30,5 +30,5 @@ public abstract class AbstractDao<E, K> {
 
     public abstract boolean create(E entity) throws SQLException;
 
-
+    public abstract Integer getNewId() throws SQLException;
 }

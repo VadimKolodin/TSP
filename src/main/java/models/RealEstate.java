@@ -5,12 +5,14 @@ import java.util.Objects;
 
 public class RealEstate {
     private int eid;
+    private int uid;
     private String type;
     private String address;
     private Blob image;
 
-    public RealEstate(int eid, String type, String address, Blob image) {
+    public RealEstate(int eid, int uid, String type, String address, Blob image) {
         this.eid = eid;
+        this.uid = uid;
         this.type = type;
         this.address = address;
         this.image = image;
@@ -48,23 +50,32 @@ public class RealEstate {
         this.image = image;
     }
 
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RealEstate that = (RealEstate) o;
-        return eid == that.eid && Objects.equals(type, that.type) && Objects.equals(address, that.address) && Objects.equals(image, that.image);
+        return eid == that.eid && uid == that.uid && Objects.equals(type, that.type) && Objects.equals(address, that.address) && Objects.equals(image, that.image);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(eid, type, address, image);
+        return Objects.hash(eid, uid, type, address, image);
     }
 
     @Override
     public String toString() {
         return "RealEstate{" +
                 "eid=" + eid +
+                ", uid='" + uid + '\'' +
                 ", type='" + type + '\'' +
                 ", address='" + address + '\'' +
                 ", image=" + image +
