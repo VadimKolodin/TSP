@@ -1,4 +1,4 @@
-package models;
+package dto;
 
 import java.sql.Blob;
 import java.util.Objects;

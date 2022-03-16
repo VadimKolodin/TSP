@@ -1,7 +1,7 @@
 package dao;
 
-import models.User;
-import models.UserInfo;
+import dto.User;
+import dto.UserInfo;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -138,13 +138,19 @@ public class UserDao extends AbstractDao<User, Integer>{
     //user + userInfo
     @Override
     public boolean delete(Integer id) throws SQLException {
-        PreparedStatement prSub = connection.prepareStatement(DELETE_USER_INFO_BY_ID);
         PreparedStatement pr = connection.prepareStatement(DELETE_USER_BY_ID);
-        prSub.setInt(1, id);
         pr.setInt(1, id);
 
-        int result = pr.executeUpdate() * prSub.executeUpdate();
+        int result = pr.executeUpdate();
         return result > 0;
+    }
+
+    public boolean deleteUserInfoById(Integer id) throws SQLException {
+        PreparedStatement pr = connection.prepareStatement(DELETE_USER_INFO_BY_ID);
+        pr.setInt(1, id);
+
+        int result = pr.executeUpdate();
+        return result >0;
     }
 
     @Override
@@ -172,7 +178,7 @@ public class UserDao extends AbstractDao<User, Integer>{
     }
 
     //userInfo
-    boolean createUserInfo(UserInfo info) throws SQLException {
+    public boolean createUserInfo(UserInfo info) throws SQLException {
         PreparedStatement pr = connection.prepareStatement(INSERT_USER_INFO);
         pr.setInt(1, info.getUid());
         pr.setString(2, info.getName());
