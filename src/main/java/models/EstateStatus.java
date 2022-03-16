@@ -5,11 +5,12 @@ import java.util.Objects;
 
 public class EstateStatus {
     private int eid;
-    private int purchasePrice;
-    private int soldPrice;
-    private LocalDate purchaseDate;
-    private LocalDate soldDate;
     private boolean isSold;
+    private int purchasePrice;
+    private LocalDate purchaseDate;
+    private int soldPrice;
+    private LocalDate soldDate;
+
 
     public EstateStatus(int eid, int purchasePrice, int soldPrice, LocalDate purchaseDate, LocalDate soldDate, boolean isSold) {
         this.eid = eid;
