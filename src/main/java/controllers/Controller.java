@@ -47,9 +47,10 @@ public class Controller {
 
     public static boolean changeUser(User user, UserInfo info) throws SQLException {
         boolean result = true;
-
-        if (user.getUid() != info.getUid()){
-            throw new IllegalArgumentException("Controller: changeUser: user uid and info uid do not match");
+        if (user!= null && info!=null) {
+            if (user.getUid() != info.getUid()) {
+                throw new IllegalArgumentException("Controller: changeUser: user uid and info uid do not match");
+            }
         }
 
         if (user != null){
