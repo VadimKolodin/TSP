@@ -8,16 +8,17 @@ public class Income {
     private int eid;
     private LocalDate idate;
     private String name;
-    private double value;
-    private String comment;
 
-    public Income(int iid, int eid, LocalDate idate, String name, double value, String comment) {
+    private Double value;
+    private String icomment;
+
+    public Income(int iid, int eid, LocalDate idate, String name, Double value, String comment) {
         this.iid = iid;
         this.eid = eid;
         this.idate = idate;
         this.name = name;
         this.value = value;
-        this.comment = comment;
+        this.icomment = comment;
     }
 
     public int getIid() {
@@ -52,20 +53,20 @@ public class Income {
         this.name = name;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
     public String getComment() {
-        return comment;
+        return icomment;
     }
 
     public void setComment(String comment) {
-        this.comment = comment;
+        this.icomment = comment;
     }
 
     @Override
@@ -73,12 +74,12 @@ public class Income {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Income income = (Income) o;
-        return iid == income.iid && eid == income.eid && Double.compare(income.value, value) == 0 && Objects.equals(idate, income.idate) && Objects.equals(name, income.name) && Objects.equals(comment, income.comment);
+        return iid == income.iid && eid == income.eid && Double.compare(income.value, value) == 0 && Objects.equals(idate, income.idate) && Objects.equals(name, income.name) && Objects.equals(icomment, income.icomment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(iid, eid, idate, name, value, comment);
+        return Objects.hash(iid, eid, idate, name, value, icomment);
     }
 
     @Override
@@ -89,7 +90,7 @@ public class Income {
                 ", idate=" + idate +
                 ", name='" + name + '\'' +
                 ", value=" + value +
-                ", comment='" + comment + '\'' +
+                ", comment='" + icomment + '\'' +
                 '}';
     }
 }
