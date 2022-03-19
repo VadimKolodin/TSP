@@ -46,7 +46,6 @@ CREATE TABLE real_estate (
     usid    NUMBER(3) NOT NULL,
     type    VARCHAR2(25) NOT NULL,
     address VARCHAR2(200) NOT NULL,
-    image   BLOB
 );
 
 ALTER TABLE real_estate ADD CONSTRAINT real_estate_pk PRIMARY KEY ( eid );

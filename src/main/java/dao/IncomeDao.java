@@ -15,6 +15,7 @@ public class IncomeDao extends AbstractDao<Income, Integer>{
 
     private static final String SELECT_ALL_INCOME = "select * from income order by date desc";
     private static final String SELECT_INCOME_BY_ID = "select * from income where iid = ?";
+    private static final String SELECT_INCOME_BY_ESTATE_ID = "select * from income where eid = ? order by date desc";
     private static final String INSERT_INCOME = "insert into income values (?,?,?,?,?,?)";
     private static final String UPDATE_INCOME_BY_ID = "update income set idate = ?, name = ?, value = ?, icomment = ? where iid = ?";
     private static final String DELETE_INCOME_BY_ID = "delete from income where iid = ?";
@@ -22,6 +23,26 @@ public class IncomeDao extends AbstractDao<Income, Integer>{
     @Override
     public List<Income> getAll() throws SQLException {
         PreparedStatement pr = connection.prepareStatement(SELECT_ALL_INCOME);
+        ResultSet resultSet = pr.executeQuery();
+
+        List<Income> incomes = new ArrayList<Income>();
+        while(resultSet.next()){
+            incomes.add(new Income(
+                    resultSet.getInt("IID"),
+                    resultSet.getInt("EID"),
+                    resultSet.getDate("IDATE").toLocalDate(),
+                    resultSet.getString("NAME"),
+                    resultSet.getDouble("VALUE"),
+                    resultSet.getString("ICOMMENT")
+            ));
+        }
+        pr.close();
+        return incomes;
+    }
+
+    public List<Income> getAllFromEstate(Integer eid) throws SQLException {
+        PreparedStatement pr = connection.prepareStatement(SELECT_INCOME_BY_ESTATE_ID);
+        pr.setInt(1, eid);
         ResultSet resultSet = pr.executeQuery();
 
         List<Income> incomes = new ArrayList<Income>();
