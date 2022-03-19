@@ -162,8 +162,9 @@ public class UserDao extends AbstractDao<User, Integer>{
         PreparedStatement pr = connection.prepareStatement(UID_SEQ_NEXTVAL);
         ResultSet rs = pr.executeQuery();
         Integer uid = null;
-        if(rs.next())
+        if(rs.next()) {
             uid = rs.getInt(1);
+        }
         pr.close();
         return uid;
     }
