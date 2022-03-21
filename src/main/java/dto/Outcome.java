@@ -1,4 +1,4 @@
-package models;
+package dto;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -8,16 +8,16 @@ public class Outcome {
     private int eid;
     private LocalDate odate;
     private String name;
-    private double value;
-    private String comment;
+    private Double value;
+    private String ocomment;
 
-    public Outcome(int oid, int eid, LocalDate odate, String name, double value, String comment) {
+    public Outcome(int oid, int eid, LocalDate odate, String name, Double value, String comment) {
         this.oid = oid;
         this.eid = eid;
         this.odate = odate;
         this.name = name;
         this.value = value;
-        this.comment = comment;
+        this.ocomment = comment;
     }
 
     public int getOid() {
@@ -52,20 +52,20 @@ public class Outcome {
         this.name = name;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
-    public String getComment() {
-        return comment;
+    public String getOcomment() {
+        return ocomment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setOcomment(String ocomment) {
+        this.ocomment = ocomment;
     }
 
     @Override
@@ -73,12 +73,12 @@ public class Outcome {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Outcome outcome = (Outcome) o;
-        return oid == outcome.oid && eid == outcome.eid && Double.compare(outcome.value, value) == 0 && Objects.equals(odate, outcome.odate) && Objects.equals(name, outcome.name) && Objects.equals(comment, outcome.comment);
+        return oid == outcome.oid && eid == outcome.eid && Double.compare(outcome.value, value) == 0 && Objects.equals(odate, outcome.odate) && Objects.equals(name, outcome.name) && Objects.equals(ocomment, outcome.ocomment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(oid, eid, odate, name, value, comment);
+        return Objects.hash(oid, eid, odate, name, value, ocomment);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class Outcome {
                 ", odate=" + odate +
                 ", name='" + name + '\'' +
                 ", value=" + value +
-                ", comment='" + comment + '\'' +
+                ", comment='" + ocomment + '\'' +
                 '}';
     }
 }

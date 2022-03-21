@@ -1,28 +1,25 @@
-package models;
+package dto;
 
-import java.sql.Blob;
 import java.util.Objects;
 
 public class RealEstate {
-    private int eid;
-    private int uid;
+    private Integer eid;
+    private Integer usid;
     private String type;
     private String address;
-    private Blob image;
 
-    public RealEstate(int eid, int uid, String type, String address, Blob image) {
+    public RealEstate(Integer eid, Integer uid, String type, String address) {
         this.eid = eid;
-        this.uid = uid;
+        this.usid = uid;
         this.type = type;
         this.address = address;
-        this.image = image;
     }
 
-    public int getEid() {
+    public Integer getEid() {
         return eid;
     }
 
-    public void setEid(int eid) {
+    public void setEid(Integer eid) {
         this.eid = eid;
     }
 
@@ -42,20 +39,12 @@ public class RealEstate {
         this.address = address;
     }
 
-    public Blob getImage() {
-        return image;
+    public Integer getUsid() {
+        return usid;
     }
 
-    public void setImage(Blob image) {
-        this.image = image;
-    }
-
-    public int getUid() {
-        return uid;
-    }
-
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setUsid(Integer usid) {
+        this.usid = usid;
     }
 
     @Override
@@ -63,22 +52,22 @@ public class RealEstate {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RealEstate that = (RealEstate) o;
-        return eid == that.eid && uid == that.uid && Objects.equals(type, that.type) && Objects.equals(address, that.address) && Objects.equals(image, that.image);
+        return eid == that.eid && usid == that.usid && Objects.equals(type, that.type) && Objects.equals(address, that.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(eid, uid, type, address, image);
+        return Objects.hash(eid, usid, type, address);
     }
 
     @Override
     public String toString() {
         return "RealEstate{" +
                 "eid=" + eid +
-                ", uid='" + uid + '\'' +
+                ", uid='" + usid + '\'' +
                 ", type='" + type + '\'' +
                 ", address='" + address + '\'' +
-                ", image=" + image +
+                ", image=" +
                 '}';
     }
 }

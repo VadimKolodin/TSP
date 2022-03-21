@@ -1,4 +1,4 @@
-package models;
+package dto;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -8,7 +8,7 @@ public class User implements Serializable {
     private String login;
     private Integer password;
 
-    public User(int id, String name, int password) {
+    public User(Integer id, String name, Integer password) {
         this.uid = id;
         this.login = name;
         this.password = password;
