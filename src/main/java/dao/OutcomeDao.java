@@ -12,9 +12,9 @@ import java.util.List;
 public class OutcomeDao extends AbstractDao<Outcome, Integer>{
     private static final String OID_SEQ_NEXTVAL = "select oid_seq.nextval from DUAL";
 
-    private static final String SELECT_ALL_OUTCOME = "select * from outcome order by date desc";
+    private static final String SELECT_ALL_OUTCOME = "select * from outcome order by odate desc";
     private static final String SELECT_OUTCOME_BY_ID = "select * from outcome where oid = ?";
-    private static final String SELECT_OUTCOME_BY_ESTATE_ID = "select * from outcome where eid = ? order by date desc";
+    private static final String SELECT_OUTCOME_BY_ESTATE_ID = "select * from outcome where eid = ? order by odate desc";
     private static final String INSERT_OUTCOME = "insert into outcome values (?,?,?,?,?,?)";
     private static final String UPDATE_OUTCOME_BY_ID = "update outcome set odate = ?, name = ?, value = ?, ocomment = ? where oid = ?";
     private static final String DELETE_OUTCOME_BY_ID = "delete from outcome where oid = ?";
@@ -61,9 +61,6 @@ public class OutcomeDao extends AbstractDao<Outcome, Integer>{
 
     @Override
     public boolean update(Outcome outcome) throws SQLException {
-        if (outcome.getOid() == 0){
-            throw new IllegalArgumentException("Null id");
-        }
         Outcome oldOutcome = getEntityById(outcome.getOid());
         PreparedStatement pr = connection.prepareStatement(UPDATE_OUTCOME_BY_ID);
 

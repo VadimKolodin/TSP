@@ -45,8 +45,6 @@ public class UserDao extends AbstractDao<User, Integer>{
     //user
     @Override
     public boolean update(User user) throws SQLException {
-        if (user.getUid()==null)
-            throw new IllegalArgumentException("Null id");
         PreparedStatement pr = connection.prepareStatement(UPDATE_USER_BY_ID);
         User oldUser = getEntityById(user.getUid());
 
@@ -71,8 +69,6 @@ public class UserDao extends AbstractDao<User, Integer>{
 
     //userInfo
     public boolean updateUserInfo(UserInfo info) throws SQLException {
-        if (info.getUid()==null)
-            throw new IllegalArgumentException("Null id");
         PreparedStatement pr = connection.prepareStatement(UPDATE_USER_INFO_BY_ID);
         UserInfo oldInfo = getUserInfoById(info.getUid());
 
@@ -104,10 +100,11 @@ public class UserDao extends AbstractDao<User, Integer>{
     // user
     @Override
     public User getEntityById(Integer id) throws SQLException {
-        User user = null;
         PreparedStatement pr = connection.prepareStatement(SELECT_USER_BY_ID);
         pr.setInt(1, id);
         ResultSet resultSet = pr.executeQuery();
+
+        User user = null;
         if (resultSet.next()){
             user = new User(
                     resultSet.getInt("USID"),
@@ -121,10 +118,11 @@ public class UserDao extends AbstractDao<User, Integer>{
 
     // userInfo
     public UserInfo getUserInfoById(Integer id) throws SQLException{
-        UserInfo info = null;
         PreparedStatement pr = connection.prepareStatement(SELECT_USER_INFO_BY_ID);
         pr.setInt(1, id);
         ResultSet resultSet = pr.executeQuery();
+
+        UserInfo info = null;
         if (resultSet.next()){
             info = new UserInfo(
                     resultSet.getInt("USID"),
@@ -172,12 +170,10 @@ public class UserDao extends AbstractDao<User, Integer>{
     //user
     @Override
     public boolean create(User user) throws SQLException {
-
         PreparedStatement pr = connection.prepareStatement(INSERT_USER);
         pr.setInt(1, user.getUid());
         pr.setString(2, user.getLogin());
         pr.setString(3, user.getPassword().toString());
-
 
         int result = pr.executeUpdate();
         pr.close();

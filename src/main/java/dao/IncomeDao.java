@@ -13,9 +13,9 @@ public class IncomeDao extends AbstractDao<Income, Integer>{
 
     private static final String IID_SEQ_NEXTVAL = "select iid_seq.nextval from DUAL";
 
-    private static final String SELECT_ALL_INCOME = "select * from income order by date desc";
+    private static final String SELECT_ALL_INCOME = "select * from income order by idate desc";
     private static final String SELECT_INCOME_BY_ID = "select * from income where iid = ?";
-    private static final String SELECT_INCOME_BY_ESTATE_ID = "select * from income where eid = ? order by date desc";
+    private static final String SELECT_INCOME_BY_ESTATE_ID = "select * from income where eid = ? order by idate desc";
     private static final String INSERT_INCOME = "insert into income values (?,?,?,?,?,?)";
     private static final String UPDATE_INCOME_BY_ID = "update income set idate = ?, name = ?, value = ?, icomment = ? where iid = ?";
     private static final String DELETE_INCOME_BY_ID = "delete from income where iid = ?";
@@ -62,9 +62,6 @@ public class IncomeDao extends AbstractDao<Income, Integer>{
 
     @Override
     public boolean update(Income income) throws SQLException {
-        if (income.getIid() == 0){
-            throw new IllegalArgumentException("Null id");
-        }
         Income oldIncome = getEntityById(income.getIid());
         PreparedStatement pr = connection.prepareStatement(UPDATE_INCOME_BY_ID);
 

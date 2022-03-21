@@ -4,15 +4,15 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class EstateStatus {
-    private int eid;
-    private boolean isSold;
-    private int purchasePrice;
+    private Integer eid;
+    private Integer purchasePrice;
     private LocalDate purchaseDate;
-    private int soldPrice;
+    private Boolean isSold;
+    private Integer soldPrice;
     private LocalDate soldDate;
 
 
-    public EstateStatus(int eid, int purchasePrice, int soldPrice, LocalDate purchaseDate, LocalDate soldDate, boolean isSold) {
+    public EstateStatus(Integer eid, Integer purchasePrice, LocalDate purchaseDate, Boolean isSold, Integer soldPrice, LocalDate soldDate) {
         this.eid = eid;
         this.purchasePrice = purchasePrice;
         this.soldPrice = soldPrice;
@@ -21,27 +21,27 @@ public class EstateStatus {
         this.isSold = isSold;
     }
 
-    public int getEid() {
+    public Integer getEid() {
         return eid;
     }
 
-    public void setEid(int eid) {
+    public void setEid(Integer eid) {
         this.eid = eid;
     }
 
-    public int getPurchasePrice() {
+    public Integer getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(int purchasePrice) {
+    public void setPurchasePrice(Integer purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
-    public int getSoldPrice() {
+    public Integer getSoldPrice() {
         return soldPrice;
     }
 
-    public void setSoldPrice(int soldPrice) {
+    public void setSoldPrice(Integer soldPrice) {
         this.soldPrice = soldPrice;
     }
 
@@ -61,11 +61,11 @@ public class EstateStatus {
         this.soldDate = soldDate;
     }
 
-    public boolean isSold() {
+    public Boolean isSold() {
         return isSold;
     }
 
-    public void setSold(boolean sold) {
+    public void setSold(Boolean sold) {
         isSold = sold;
     }
 

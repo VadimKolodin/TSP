@@ -13,10 +13,11 @@ drop table users;
 CREATE TABLE estate_status (
     eid        NUMBER(3) NOT NULL,
     purchase_p NUMBER(8) NOT NULL,
-    sold_p     NUMBER(8),
     purchase_d DATE NOT NULL,
-    sold_d     DATE,
-    sold       VARCHAR2(1) NOT NULL
+    sold       VARCHAR2(1) NOT NULL,
+    sold_p     NUMBER(8),
+    sold_d     DATE
+
 );
 
 CREATE TABLE income (
