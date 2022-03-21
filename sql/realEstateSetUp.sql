@@ -21,7 +21,7 @@ CREATE TABLE estate_status (
 );
 
 CREATE TABLE income (
-    oid       NUMBER(6) NOT NULL,
+    iid       NUMBER(6) NOT NULL,
     eid       NUMBER(3) NOT NULL,
     idate    DATE NOT NULL,
     name      VARCHAR2(25) NOT NULL,
@@ -29,10 +29,10 @@ CREATE TABLE income (
     icomment VARCHAR2(200)
 );
 
-ALTER TABLE income ADD CONSTRAINT outcomev1_pk PRIMARY KEY ( oid );
+ALTER TABLE income ADD CONSTRAINT incomev1_pk PRIMARY KEY ( iid );
 
 CREATE TABLE outcome (
-    iid       NUMBER(6) NOT NULL,
+    oid       NUMBER(6) NOT NULL,
     eid       NUMBER(3) NOT NULL,
     odate    DATE NOT NULL,
     name      VARCHAR2(25) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE outcome (
     ocomment VARCHAR2(200)
 );
 
-ALTER TABLE outcome ADD CONSTRAINT incomev1_pk PRIMARY KEY ( iid );
+ALTER TABLE outcome ADD CONSTRAINT outcomev1_pk PRIMARY KEY ( oid );
 
 CREATE TABLE real_estate (
     eid     NUMBER(6) NOT NULL,
