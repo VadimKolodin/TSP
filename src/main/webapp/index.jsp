@@ -15,5 +15,8 @@
 <p align = "right">
     <a href = "enter">Вход</a>
 </p>
+<a href="${pageContext.request.contextPath}/userinfo">
+    User Info
+</a>
 </body>
 </html>

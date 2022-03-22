@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="dto.UserInfo" %>
+<%@ page import="dao.UserDao" %>
+<%@ page import="dto.User" %><%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 20.03.2022
@@ -12,7 +15,7 @@
     <title> Регистрация </title>
 </head>
 <body>
-<form action = "URL" >
+<form action = "treatment" method="post" enctype="multipart/form-data" >
     <b> Логин: </b><Br>
     <input type="text" name="LOGIN" size = "20"><Br>
     <b> Пароль: </b> <Br>

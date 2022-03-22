@@ -17,7 +17,6 @@ CREATE TABLE estate_status (
     sold       VARCHAR2(1) NOT NULL,
     sold_p     NUMBER(8),
     sold_d     DATE
-
 );
 
 CREATE TABLE income (
@@ -46,7 +45,7 @@ CREATE TABLE real_estate (
     eid     NUMBER(6) NOT NULL,
     usid    NUMBER(3) NOT NULL,
     type    VARCHAR2(25) NOT NULL,
-    address VARCHAR2(200) NOT NULL,
+    address VARCHAR2(200) NOT NULL
 );
 
 ALTER TABLE real_estate ADD CONSTRAINT real_estate_pk PRIMARY KEY ( eid );

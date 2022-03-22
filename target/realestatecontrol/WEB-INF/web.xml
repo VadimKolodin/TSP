@@ -29,4 +29,24 @@
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userinfo</servlet-name>
+        <jsp-file>/WEB-INF/userinfo.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>userinfo</servlet-name>
+        <url-pattern>/userinfo/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>treatment</servlet-name>
+        <jsp-file>/signification/treatment.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>treatment</servlet-name>
+        <url-pattern>/treatment/*</url-pattern>
+    </servlet-mapping>
 </web-app>

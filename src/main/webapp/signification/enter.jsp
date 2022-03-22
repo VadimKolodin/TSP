@@ -1,4 +1,7 @@
-<%--
+<%@ page import="dao.UserDao" %>
+<%@ page import="dto.UserInfo" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.time.LocalDate" %><%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 20.03.2022
@@ -12,12 +15,15 @@
     <title> Вход </title>
 </head>
 <body>
-<form action = "URL" >
+<form action = "${pageContext.request.contextPath}/enter" method="post" enctype="multipart/form-data" >
+
     <b> Логин: </b><Br>
-    <input type="text" name="LOGIN" size = "20"><Br>
+    <input type="text" name="LOGIN" ><Br>
     <b> Пароль: </b> <Br>
-    <input type = "password" name= "PASSWORD" size = "10">
-    <input type = "submit"  value = "ОК"> <Br>
+    <input type = "password" name= "PASSWORD"  >
+
+    <button type = "submit">  Войти </button> <Br>
+
     <!--Проверка на корректность-->
     <a href = "registration"> Зарегистрироваться </a>
 </form>
