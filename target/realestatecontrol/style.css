@@ -1,3 +1,51 @@
 body {
-    background: aqua;
+    background: whitesmoke;
+
+}
+.start_menu body{
+    font-size:1.3rem;
+}
+.start_menu a {
+    text-decoration: none;
+    letter-spacing: 2px;
+    position: relative;
+    margin: 0 10px 0 10px;
+    font-size: 28px;
+    display: inline;
+    transition: color .2s;
+}
+.start_menu ul{
+    list-style: none; /*убираем маркеры списка*/
+    margin: 0; /*убираем верхнее и нижнее поле, равное 1em*/
+    padding-left: 0; /*убираем левый отступ, равный 40px*/
+}
+.start_menu li {display: inline-block;}
+.start_menu li:after {
+    content: "|";
+    color: #606060;
+    display: inline;
+    vertical-align:top;
+}
+.enter_and_reg a{
+    text-decoration: none;
+    position: relative;
+    margin: 0 5px 0 5px;
+    font-size: 20px;
+    display: inline;
+    transition: color .2s;
+}
+.enter input{
+    font-size: 30px;
+}
+.enter b{
+    font-size: 30px;
+}
+.ent_button button{
+    width: 90px;
+    height: 30px;
+    margin: 0 0 0 100px;
+    font-size: 20px;
+}
+.ent_button button:hover{
+    background-color: firebrick;
 }

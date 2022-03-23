@@ -49,4 +49,45 @@
         <servlet-name>treatment</servlet-name>
         <url-pattern>/treatment/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MyRealEstates</servlet-name>
+        <jsp-file>/WEB-INF/MyRealEstates.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MyRealEstates</servlet-name>
+        <url-pattern>/MyRealEstates/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>statistics</servlet-name>
+        <jsp-file>/WEB-INF/statistics.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>statistics</servlet-name>
+        <url-pattern>/statistics/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>users</servlet-name>
+        <jsp-file>/WEB-INF/users.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>users</servlet-name>
+        <url-pattern>/users/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>menu</servlet-name>
+        <jsp-file>/menu/menu.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>menu</servlet-name>
+        <url-pattern>/menu/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

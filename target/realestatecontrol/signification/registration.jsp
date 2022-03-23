@@ -15,17 +15,19 @@
     <title> Регистрация </title>
 </head>
 <body>
-<form action = "treatment" method="post" enctype="multipart/form-data" >
+<form action = "treatment" method="post" enctype="multipart/form-data" class="enter" >
     <b> Логин: </b><Br>
-    <input type="text" name="LOGIN" size = "20"><Br>
+    <input type="text" name="LOGIN" ><Br>
     <b> Пароль: </b> <Br>
-    <input type = "password" name= "PASSWORD1" size = "10"><Br>
+    <input type = "password" name= "PASSWORD1" ><Br>
     <b> Повторите пароль: </b> <Br>
-    <input type = "password" name= "PASSWORD2" size = "10"><Br>
+    <input type = "password" name= "PASSWORD2" ><Br>
     <!--ПРОВЕРКА НА КОРРЕКТНОСТЬ ПАРОЛЯ-->
     <b>ФИО: </b><Br>
-    <input type = "text" name = "FIO" size = "50"><Br>
-    <input type = "submit"  value = "ОК"> <Br>
+    <input type = "text" name = "FIO" ><Br>
+    <p class="ent_button">
+        <button type = "submit" name="submit2" formaction="enter" >ОК</button>
+    </p>
 </form>
 
 </body>

@@ -12,11 +12,12 @@
     <title>Главная страница</title>
 </head>
 <body>
-<p align = "right">
-    <a href = "enter">Вход</a>
+<p align="right" class="enter_and_reg">
+    <a href = "enter">Вход</a> |
+    <a href = "userinfo"><nobr>Моя страница</nobr></a>
 </p>
-<a href="${pageContext.request.contextPath}/userinfo">
-    User Info
-</a>
+<jsp:include page="menu/menu.jsp"></jsp:include>
+    <Br>
+    <h1 align="center">Главная страница</h1>
 </body>
 </html>

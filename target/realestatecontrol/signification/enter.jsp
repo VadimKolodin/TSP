@@ -15,17 +15,16 @@
     <title> Вход </title>
 </head>
 <body>
-<form action = "${pageContext.request.contextPath}/enter" method="post" enctype="multipart/form-data" >
+<form action = "${pageContext.request.contextPath}/enter" method="post" enctype="multipart/form-data" class="enter" >
 
     <b> Логин: </b><Br>
     <input type="text" name="LOGIN" ><Br>
     <b> Пароль: </b> <Br>
     <input type = "password" name= "PASSWORD"  >
-
-    <button type = "submit">  Войти </button> <Br>
-
-    <!--Проверка на корректность-->
-    <a href = "registration"> Зарегистрироваться </a>
+    <p class="ent_button enter_and_reg">
+        <a  href = "registration"> Зарегистрироваться </a>
+        <button type = "submit" name="submit1" formaction="treatment" >Войти</button>
+    </p>
 </form>
 
 </body>
