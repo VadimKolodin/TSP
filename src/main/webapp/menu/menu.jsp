@@ -15,7 +15,7 @@
 
     <ul class="start_menu">
         <li><a href = "${pageContext.request.contextPath}/"> Главная страница </a></li>
-        <li><a href = "${pageContext.request.contextPath}/MyRealEstates"> Моя недвижимость </a></li>
+        <li><a href = "${pageContext.request.contextPath}/estates"> Моя недвижимость </a></li>
         <li><a href = "${pageContext.request.contextPath}/statistics"> Статистика </a></li>
         <li><a href = "${pageContext.request.contextPath}/users"> Пользователи </a></li>
     </ul>

@@ -15,7 +15,7 @@
     <title> Регистрация </title>
 </head>
 <body>
-<form action = "treatment" method="post" enctype="multipart/form-data" class="enter" >
+<form action = "treatment" method="post" enctype="multipart/form-data" class="enter reg_button" >
     <b> Логин: </b><Br>
     <input type="text" name="LOGIN" ><Br>
     <b> Пароль: </b> <Br>
@@ -25,7 +25,7 @@
     <!--ПРОВЕРКА НА КОРРЕКТНОСТЬ ПАРОЛЯ-->
     <b>ФИО: </b><Br>
     <input type = "text" name = "FIO" ><Br>
-    <p class="ent_button">
+    <p>
         <button type = "submit" name="submit2" formaction="enter" >ОК</button>
     </p>
 </form>

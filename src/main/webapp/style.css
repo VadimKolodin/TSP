@@ -13,6 +13,10 @@ body {
     font-size: 28px;
     display: inline;
     transition: color .2s;
+    color:#191970;
+}
+.start_menu a:hover{
+    color:#008080;
 }
 .start_menu ul{
     list-style: none; /*убираем маркеры списка*/
@@ -32,7 +36,10 @@ body {
     margin: 0 5px 0 5px;
     font-size: 20px;
     display: inline;
-    transition: color .2s;
+    color:#191970
+}
+.enter_and_reg a:hover{
+    color:#008080;
 }
 .enter input{
     font-size: 30px;
@@ -48,4 +55,51 @@ body {
 }
 .ent_button button:hover{
     background-color: firebrick;
+}
+.reg_button button{
+    width: 90px;
+    height: 30px;
+    margin: 0 0 0 290px;
+    font-size: 20px;
+}
+.reg_button button:hover{
+    background-color: firebrick;
+}
+.list_estates img{
+    margin: 30px 0 0 30px;
+}
+.list_estates p{
+    display: inline-block;
+    text-align: center;
+    margin: 0 0 0 50px;
+    font-size: 25px;
+}
+.list_estates a{
+    text-decoration: none;
+    position: relative;
+    color: black;
+    font-size: 25px;
+    display: inline;
+}
+.list_estates a:hover{
+    color:#008080;
+}
+.list_estates button{
+    font-size: 18px;
+}
+.list_estates button:hover {
+    background-color: firebrick;
+}
+.add_button button{
+    margin: 30px 0 0 60px;
+    font-size: 18px;
+    display: inline;
+}
+.add_button button:hover {
+    background-color: firebrick;
+}
+.color_header_1 {
+    font-size: 40px;
+    color:#191970;
+    margin: 10px 10px 10px 10px;
 }

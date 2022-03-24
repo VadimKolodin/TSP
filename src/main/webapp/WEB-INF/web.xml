@@ -32,7 +32,7 @@
 
     <servlet>
         <servlet-name>userinfo</servlet-name>
-        <jsp-file>/WEB-INF/userinfo.jsp</jsp-file>
+        <jsp-file>/clients/userinfo.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>
@@ -51,13 +51,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>MyRealEstates</servlet-name>
-        <jsp-file>/WEB-INF/MyRealEstates.jsp</jsp-file>
+        <servlet-name>estates</servlet-name>
+        <jsp-file>/real_estates/MyRealEstates.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>MyRealEstates</servlet-name>
-        <url-pattern>/MyRealEstates/*</url-pattern>
+        <servlet-name>estates</servlet-name>
+        <url-pattern>/estates/*</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -72,7 +72,7 @@
 
     <servlet>
         <servlet-name>users</servlet-name>
-        <jsp-file>/WEB-INF/users.jsp</jsp-file>
+        <jsp-file>/clients/users.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>
@@ -88,6 +88,26 @@
     <servlet-mapping>
         <servlet-name>menu</servlet-name>
         <url-pattern>/menu/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>estate</servlet-name>
+        <jsp-file>/real_estates/MyRealEstate.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>estate</servlet-name>
+        <url-pattern>/estate/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewEstate</servlet-name>
+        <jsp-file>/real_estates/NewEstate.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewEstate</servlet-name>
+        <url-pattern>/NewEstate/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

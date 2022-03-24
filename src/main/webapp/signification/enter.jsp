@@ -15,7 +15,7 @@
     <title> Вход </title>
 </head>
 <body>
-<form action = "${pageContext.request.contextPath}/enter" method="post" enctype="multipart/form-data" class="enter" >
+<form action = "${pageContext.request.contextPath}/treatment" method="post" enctype="multipart/form-data" class="enter" >
 
     <b> Логин: </b><Br>
     <input type="text" name="LOGIN" ><Br>
