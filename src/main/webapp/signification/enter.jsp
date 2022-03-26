@@ -23,7 +23,7 @@
     <input type = "password" name= "PASSWORD"  >
     <p class="ent_button enter_and_reg">
         <a  href = "registration"> Зарегистрироваться </a>
-        <button type = "submit" name="submit1" formaction="treatment" >Войти</button>
+        <button type = "submit" name="but_enter" formaction="treatment" >Войти</button>
     </p>
 </form>
 

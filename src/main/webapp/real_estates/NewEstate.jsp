@@ -8,9 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <style><%@include file="/style.css"%></style>
     <title>Изменение недвижимости</title>
 </head>
 <body>
-
+    <form action="treatment"  method="post" enctype="multipart/form-data" class="addEstate">
+        <b>Название:</b><Br>
+        <input type="text" name="typeEstate"><Br>
+        <b>Адрес:</b><Br>
+        <input type="text" name="addressEstate"><Br><Br>
+        <input id="file-input" type="file" name="file">
+        <Br>
+        <p class="add_button2">
+            <button type="submit" name="but_add_estate">ОК </button>
+        </p>
+</form>
 </body>
 </html>
