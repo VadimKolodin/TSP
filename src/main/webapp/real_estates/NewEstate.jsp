@@ -17,7 +17,7 @@
         <input type="text" name="typeEstate"><Br>
         <b>Адрес:</b><Br>
         <input type="text" name="addressEstate"><Br><Br>
-        <input id="file-input" type="file" name="file">
+        <input  type="file" name="file" accept="image/jpeg,image/png">
         <Br>
         <p class="add_button2">
             <button type="submit" name="but_add_estate">ОК </button>

@@ -11,6 +11,18 @@
     <title>Страница Недвижимости</title>
 </head>
 <body>
-Страница Недвижимости
+    <p align="right">
+        <a href="NewEstate">Редактировать</a>
+    </p>
+    <p>Дом<Br>
+    ул. Петра Первого д. 65</p>
+    <table align="center">
+        <caption>Таблица доходов и расходов</caption>
+        <tr>
+            <th>Доходы</th>
+            <th>Расходы</th>
+        </tr>
+        <tr><td>Аренда</td><td>Коммунальные услуги</td></tr>
+    </table>
 </body>
 </html>
