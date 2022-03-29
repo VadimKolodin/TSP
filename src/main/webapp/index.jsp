@@ -12,10 +12,7 @@
     <title>Главная страница</title>
 </head>
 <body>
-<p align="right" class="enter_and_reg">
-    <a href = "enter">Вход</a> |
-    <a href = "userinfo"><nobr>Моя страница</nobr></a>
-</p>
+
 <jsp:include page="menu/menu.jsp"></jsp:include>
     <Br>
     <h1 align="center">Главная страница</h1>

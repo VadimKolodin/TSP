@@ -12,7 +12,10 @@
     <title>Меню</title>
 </head>
 <body>
-
+<p align="right" class="enter_and_reg">
+    <a href = "enter">Вход</a> |
+    <a href = "userinfo"><nobr>Моя страница</nobr></a>
+</p>
     <ul class="start_menu">
         <li><a href = "${pageContext.request.contextPath}/"> Главная страница </a></li>
         <li><a href = "${pageContext.request.contextPath}/estates"> Моя недвижимость </a></li>
