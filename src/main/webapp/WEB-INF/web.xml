@@ -110,4 +110,13 @@
         <url-pattern>/NewEstate/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>editSpending</servlet-name>
+        <jsp-file>/real_estates/editSpending.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editSpending</servlet-name>
+        <url-pattern>/editSpending/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

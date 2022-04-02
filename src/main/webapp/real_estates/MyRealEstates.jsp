@@ -11,13 +11,14 @@
     <style><%@include file="/style.css"%></style>
     <title>Моя недвижимость</title>
 </head>
+<body>
 <jsp:include page="/menu/menu.jsp"></jsp:include>
 <h1 align="center" class="color_header_1">
     Моя недвижимость
 </h1>
 <form action="NewEstate" method="post" enctype="multipart/form-data">
     <p class = "add_button">
-        <button>Добавить</button>
+        <button type="submit" name="addEst1">Добавить</button>
     </p>
 </form>
 <ul class="list_estates">
@@ -29,7 +30,7 @@
         </p><Br>
         <form action = "treatment" method="get">
             <div align="right">
-                <button>Удалить</button>
+                <button type="submit" name="deleteEst">Удалить</button>
             </div>
         </form>
     </li>

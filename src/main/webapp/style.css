@@ -25,7 +25,7 @@ body {
 }
 .start_menu li {display: inline-block;}
 .start_menu li:after {
-    content: "|";
+    content: " ";
     color: #606060;
     display: inline;
     vertical-align:top;
@@ -128,10 +128,52 @@ body {
     background-color: firebrick;
 }
 .nav-tabs ul{
-   align-items: center;
-    width: 200px;
+    align-items: center;
+    display: block;
+    position: relative;
+
 }
 .nav-item{
     margin: 0 100px 0 100px;
     align-items: center;
+    position: relative;
+}
+.deleteBut button{
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+    min-width: 70px;
+}
+.changeBut button{
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+    min-width: 70px;
+}
+.tab-pane-text p{
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    align-items: center;
+
+}
+.tab-content{
+    margin-left: 240px;
+}
+.flex-container{
+    display: flex;
+    width: available;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-right: 20px;
+    align-items: center;
+}
+.flex-container-col{
+    display: flex;
+    width: available;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.flex-item{
+
 }

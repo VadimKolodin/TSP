@@ -22,12 +22,21 @@
 
 </head>
 <body>
+<jsp:include page="/menu/menu.jsp"></jsp:include>
     <p class="enter_and_reg" align="right">
         <a href = "NewEstate">Редактировать</a>
     </p>
-    <img src="real_estates/images/default.jpg" align="middle" width="250" height="250"></a>
-    Дом
-    ул. Петра Первого д. 65
+    <img src="real_estates/images/default.jpg" align="left" width="240" height="240"></a>
+    <p>
+        Дом
+    </p>
+    <p>
+        ул. Петра Первого д. 65
+    </p>
+    <p>
+        Статус: в собственности
+    </p>
+    <Br>
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#income">Доходы</a>
@@ -38,10 +47,58 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade show active" id="income">
-            Какие-то доходы...
+            <form action="editSpending">
+                <button type="submit" name="addIncome">Добавить</button>
+            </form>
+            <%for(int i=1; i<6;++i){%>
+            <div class="flex-container">
+                <div class = "flex-item">
+                    <p class="tab-pane-text">Какие-то доходы <%=i%>...</p>
+                </div>
+                <div class = flex-item>
+                    <div class = "flex-container-col">
+                        <div class = "flex-item">
+                            <form action="ChangeIncome" class="changeBut">
+                                <button type="submit" name="changeIncome">Изменить</button>
+                            </form>
+                        </div>
+                        <div class = "flex-item">
+                            <form action="DeleteIncome" class="deleteBut">
+                                <button type="submit" name="deleteIncome">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <%}%>
         </div>
         <div class="tab-pane fade" id="outcome">
-            Какие-то расходы...
+            <form action="NewEstate">
+                <button type="submit" name="addOutcome">Добавить</button>
+            </form>
+            <%for(int i=1; i<6;++i){%>
+            <div class="flex-container">
+                <div class = "flex-item">
+                    <p class="tab-pane-text">Какие-то расходы <%=i%>...</p>
+                </div>
+                <div class = flex-item>
+                    <div class = "flex-container-col">
+                        <div class = "flex-item">
+                            <form action="ChangeOutcome" class="changeBut">
+                                <button type="submit" name="changeOutcome">Изменить</button>
+                            </form>
+                        </div>
+                        <div class = "flex-item">
+                            <form action="DeleteOutcome" class="deleteBut">
+                                <button type="submit" name="deleteOutcome">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <%}%>
         </div>
     </div>
 </body>

@@ -16,13 +16,14 @@
     <a href = "enter">Вход</a> |
     <a href = "userinfo"><nobr>Моя страница</nobr></a>
 </p>
+<hr>
     <ul class="start_menu">
         <li><a href = "${pageContext.request.contextPath}/"> Главная страница </a></li>
         <li><a href = "${pageContext.request.contextPath}/estates"> Моя недвижимость </a></li>
         <li><a href = "${pageContext.request.contextPath}/statistics"> Статистика </a></li>
         <li><a href = "${pageContext.request.contextPath}/users"> Пользователи </a></li>
     </ul>
-
+<hr>
     <!-- сделать отступ с ксс-->
 
 </body>
