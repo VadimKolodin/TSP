@@ -19,9 +19,9 @@ body {
     color:#008080;
 }
 .start_menu ul{
-    list-style: none; /*убираем маркеры списка*/
-    margin: 0; /*убираем верхнее и нижнее поле, равное 1em*/
-    padding-left: 0; /*убираем левый отступ, равный 40px*/
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
 }
 .start_menu li {display: inline-block;}
 .start_menu li:after {
@@ -41,10 +41,18 @@ body {
 .enter_and_reg a:hover{
     color:#008080;
 }
-.enter input{
-    font-size: 30px;
+.enter{
+    margin-top: 100px;
+    text-align: center;
+    text-align-all: center;
+    line-height: 1.3cm;
 }
-.enter b{
+.enter label{
+    font-size:25px;
+    font-weight: bold;
+    color:#191970;
+}
+.enter input{
     font-size: 30px;
 }
 .ent_button button{
@@ -52,18 +60,22 @@ body {
     height: 30px;
     margin: 0 0 0 100px;
     font-size: 20px;
+    color:#191970;
 }
 .ent_button button:hover{
-    background-color: firebrick;
+    background-color: skyblue;
+    color:#000000;
 }
 .reg_button button{
     width: 90px;
     height: 30px;
     margin: 0 0 0 290px;
     font-size: 20px;
+    color:#191970;
 }
 .reg_button button:hover{
-    background-color: firebrick;
+    background-color: skyblue;
+    color:#000000;
 }
 .list_estates img{
     margin: 30px 0 0 30px;
@@ -88,7 +100,8 @@ body {
     font-size: 18px;
 }
 .list_estates button:hover {
-    background-color: firebrick;
+    background-color: skyblue;
+    color:#000000;
 }
 .list_estates li{
     list-style: none;
@@ -100,32 +113,34 @@ body {
     display: inline;
 }
 .add_button button:hover {
-    background-color: firebrick;
+    background-color: skyblue;
+    color:#000000;
 }
 .color_header_1 {
     font-size: 40px;
     color:#191970;
     margin: 10px 10px 10px 10px;
 }
-.addEstate b{
-    font-size: 20px;
-
-}
-.addEstate input[type="text"]{
-    font-size: 30px;
-
-}
-.addEstate input[type="file"]{
-    font-size: 20px;
-
-}
 .add_button2 button{
     margin: 0 0 0 330px;
     font-size: 20px;
     display: inline;
 }
+.user_info input[type="text"]{
+    font-size: 30px;
+}
+.user_info input[type="password"]{
+    font-size: 30px;
+}
+.user_info input[type="file"]{
+    font-size: 18px;
+}
+.user_info input[type="date"]{
+    font-size: 25px;
+}
 .add_button2 button:hover {
-    background-color: firebrick;
+    background-color: skyblue;
+    color:#000000;
 }
 .nav-tabs ul{
     align-items: center;
@@ -141,13 +156,13 @@ body {
 .deleteBut button{
     display: flex;
     justify-content: space-between;
-    width: 80px;
+    width: 90px;
     min-width: 70px;
 }
 .changeBut button{
     display: flex;
     justify-content: space-between;
-    width: 80px;
+    width: 90px;
     min-width: 70px;
 }
 .tab-pane-text p{
@@ -176,4 +191,112 @@ body {
 }
 .flex-item{
 
+}
+
+.list_users ul{
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding-left: 0;
+}
+.list_users li{
+    list-style: none;
+}
+.list_users a{
+    text-decoration: none;
+    color:#191970;
+}
+.list_users a:hover{
+    color:#008080;
+}
+.list_users{
+    text-align: center;
+    font-size: 25px;
+    color:#191970;
+    line-height: 1.5cm;
+    margin:50px 0 0 0;
+}
+.user_info label{
+    font-size: 25px;
+    font-weight: bold;
+    color:#191970;
+}
+.user_info input{
+    font-size: 25px;
+}
+.user_info a{
+    text-decoration: none;
+    color:#191970;
+    font-size: 25px;
+}
+.user_info a:hover{
+    color:#008080;
+}
+.user_info{
+    line-height: 1.3cm;
+    margin:20px 0 0 40px;
+}
+.user_info_but {
+    margin: 30px 0 0 280px;
+    font-size: 18px;
+    color:#191970;
+}
+.user_info_but:hover{
+    background-color: skyblue;
+    color:#000000;
+}
+.user_info_but a{
+    text-decoration: none;
+    color:#191970;
+}
+.edit_info_but {
+    margin: 30px 0 0 215px;
+    font-size: 18px;
+    color:#191970;
+}
+.edit_info_but:hover{
+    background-color: skyblue;
+    color:#000000;
+}
+.spend_button button{
+    margin: 0 0 0 335px;
+    font-size: 18px;
+    color:#191970;
+}
+.spend_button button:hover{
+    background-color: skyblue;
+    color:#000000;
+}
+.bar_graph{
+    width: 600px;
+    height: 500px;
+    margin:50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.error {
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.3cm;
+    color: #191970;
+}
+.error2 {
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 25px;
+    line-height: 1.1cm;
+    color: #191970;
+}
+.error3 a{
+    text-align: center;
+    text-decoration: none;
+    color:#191970;
+    font-size: 20px;
+}
+.error3 a:hover{
+    color:#008080;
 }

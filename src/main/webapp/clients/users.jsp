@@ -13,6 +13,12 @@
 </head>
 <body>
 <jsp:include page="/menu/menu.jsp"></jsp:include>
-    Это список пользователей
+    <ul class="list_users">
+        <%for(int i=1; i<10;++i){%>
+        <li>
+            <a href="userinfo">Иванов Иван Иванович</a>
+        </li>
+        <%}%>
+    </ul>
 </body>
 </html>

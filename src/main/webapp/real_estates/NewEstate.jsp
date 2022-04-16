@@ -12,13 +12,12 @@
     <title>Изменение недвижимости</title>
 </head>
 <body>
-    <form action="treatment"  method="post" enctype="multipart/form-data" class="addEstate">
-        <b>Название:</b><Br>
-        <input type="text" name="typeEstate"><Br>
-        <b>Адрес:</b><Br>
-        <input type="text" name="addressEstate"><Br><Br>
-        <input  type="file" name="file" accept="image/jpeg,image/png">
-        <Br>
+    <form action="error"  method="post" enctype="multipart/form-data" class="user_info">
+        <label for="type">Название:</label><br>
+        <input type="text" id="type" name="typeEstate"><br>
+        <label for="address">Адрес:</label><br>
+        <input type="text" id="address" name="addressEstate"><br><br>
+        <input  type="file" name="file" accept="image/jpeg,image/png"><br>
         <p class="add_button2">
             <button type="submit" name="but_add_estate">ОК </button>
         </p>

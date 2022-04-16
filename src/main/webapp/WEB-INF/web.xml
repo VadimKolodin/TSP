@@ -41,13 +41,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>treatment</servlet-name>
-        <jsp-file>/signification/treatment.jsp</jsp-file>
+        <servlet-name>error</servlet-name>
+        <jsp-file>/signification/error.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>treatment</servlet-name>
-        <url-pattern>/treatment/*</url-pattern>
+        <servlet-name>error</servlet-name>
+        <url-pattern>/error/*</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -119,4 +119,13 @@
         <url-pattern>/editSpending/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>changeUserInfo</servlet-name>
+        <jsp-file>/clients/changeUserInfo.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>changeUserInfo</servlet-name>
+        <url-pattern>/changeUserInfo/*</url-pattern>
+    </servlet-mapping>
 </web-app>

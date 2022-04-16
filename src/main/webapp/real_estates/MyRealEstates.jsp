@@ -28,7 +28,7 @@
             <a href="estate">Дом</a> <Br>
             ул. Петра Первого д. 65
         </p><Br>
-        <form action = "treatment" method="get">
+        <form action = "error" method="get">
             <div align="right">
                 <button type="submit" name="deleteEst">Удалить</button>
             </div>
@@ -40,7 +40,7 @@
             <a href="estate">Квартира</a> <Br>
             ул. Съездовская д.8 кв.103
         </p><Br>
-        <form action = "treatment" method="get">
+        <form action = "error" method="get">
             <div align="right">
                 <button>Удалить</button>
             </div>

@@ -16,14 +16,15 @@
 </head>
 <body>
 <form action = "${pageContext.request.contextPath}/treatment" method="post" enctype="multipart/form-data" class="enter" >
-
-    <b> Логин: </b><Br>
-    <input type="text" name="LOGIN" ><Br>
-    <b> Пароль: </b> <Br>
-    <input type = "password" name= "PASSWORD"  >
-    <p class="ent_button enter_and_reg">
-        <a  href = "registration"> Зарегистрироваться </a>
-        <button type = "submit" name="but_enter" formaction="treatment" >Войти</button>
+    <p class="enter">
+        <label for = "login">Логин</label><br>
+        <input type="text" id="login" name="LOGIN" ><br>
+        <label for="password">Пароль</label><br>
+        <input type="password" name="Password" id="password"><br>
+        <p class="ent_button enter_and_reg">
+            <a  href = "registration"> Зарегистрироваться </a>
+            <button type = "submit" name="but_enter" formaction="error" >Войти</button>
+        </p>
     </p>
 </form>
 

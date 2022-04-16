@@ -36,6 +36,9 @@
     <p>
         Статус: в собственности
     </p>
+    <p>
+        Дополнительная информация
+    </p>
     <Br>
     <ul class="nav nav-tabs">
         <li class="nav-item">
@@ -58,7 +61,7 @@
                 <div class = flex-item>
                     <div class = "flex-container-col">
                         <div class = "flex-item">
-                            <form action="ChangeIncome" class="changeBut">
+                            <form action="editSpending" class="changeBut">
                                 <button type="submit" name="changeIncome">Изменить</button>
                             </form>
                         </div>
@@ -85,7 +88,7 @@
                 <div class = flex-item>
                     <div class = "flex-container-col">
                         <div class = "flex-item">
-                            <form action="ChangeOutcome" class="changeBut">
+                            <form action="editSpending" class="changeBut">
                                 <button type="submit" name="changeOutcome">Изменить</button>
                             </form>
                         </div>

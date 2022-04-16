@@ -8,9 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Моя страница</title>
+    <title>Информация о пользователе</title>
+    <style><%@include file="/style.css"%></style>
 </head>
 <body>
-    Это информация о вошедшем пользователе
+    <jsp:include page="/menu/menu.jsp"></jsp:include>
+    <button type="button"  class="user_info_but">
+        <a href="changeUserInfo">Редактировать</a></button>
+    <p class="user_info">
+        <label for="name">ФИО</label><br>
+        <input type="text" id="name" name="FIO" disabled="disabled" value="Иванов Иван Иванович"><br>
+        <label for="description">О себе</label><br>
+        <input type="text" id="description" name="depiction" disabled="disabled" height="200" value="О себе..."><br>
+        <a href="estates">Недвижимость пользователя</a>
+    </p>
+
 </body>
 </html>
