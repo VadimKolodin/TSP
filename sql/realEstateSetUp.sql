@@ -23,7 +23,7 @@ CREATE TABLE income (
     iid       NUMBER(6) NOT NULL,
     eid       NUMBER(3) NOT NULL,
     idate    DATE NOT NULL,
-    name      VARCHAR2(25) NOT NULL,
+    name      VARCHAR2(40) NOT NULL,
     value     NUMBER(7, 1) NOT NULL,
     icomment VARCHAR2(200)
 );
@@ -34,7 +34,7 @@ CREATE TABLE outcome (
     oid       NUMBER(6) NOT NULL,
     eid       NUMBER(3) NOT NULL,
     odate    DATE NOT NULL,
-    name      VARCHAR2(25) NOT NULL,
+    name      VARCHAR2(40) NOT NULL,
     value     NUMBER(7, 1) NOT NULL,
     ocomment VARCHAR2(200)
 );
