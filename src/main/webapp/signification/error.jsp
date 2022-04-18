@@ -1,7 +1,4 @@
-<%@ page import="dto.User" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="dto.UserInfo" %>
-<%@ page import="dao.UserDao" %><%--
+<%@ page import="java.time.LocalDate" %><%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 21.03.2022

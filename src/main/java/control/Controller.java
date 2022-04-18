@@ -7,6 +7,7 @@ import control.stat.StatisticsHandler;
 import models.Model;
 import models.dto.*;
 
+import java.io.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -284,5 +285,38 @@ public class Controller {
     }
     public HashMap<String, Double> getEstateTotal(int usid, int eid){
         return stat.getEstateTotal(usid, eid);
+    }
+
+    public String getEstateImage(int eid){
+        File image = new File("src\\main\\webapp\\real_estates\\images\\"+eid+".jpg");
+        if (image.exists()){
+            return image.getAbsolutePath();
+        } else {
+            return new File("src\\main\\webapp\\real_estates\\images\\default.jpg").getAbsolutePath();
+        }
+    }
+
+    public void createEstateImage(int eid, File tempFile) throws IOException {
+        if(!tempFile.exists()||!tempFile.canRead()||!tempFile.isFile()){
+            throw new IllegalArgumentException("Файл был поврежден");
+        }
+        File image = new File("src\\main\\webapp\\real_estates\\images\\"+eid+".jpg");
+        OutputStream imageStream = new FileOutputStream(image);
+        InputStream tempStream = new FileInputStream(tempFile);
+        byte[] buffer = new byte[tempStream.available()];
+        tempStream.read(buffer);
+        tempStream.close();
+        imageStream.write(buffer);
+        imageStream.close();
+    }
+    public void changeEstateImage(int eid, File tempFile) throws IOException {
+        createEstateImage(eid, tempFile);
+    }
+    public boolean deleteEstateImage(int eid){
+        File image = new File("src\\main\\webapp\\real_estates\\images\\"+eid+".jpg");
+        if (image.exists()){
+            return image.delete();
+        }
+        return false;
     }
 }

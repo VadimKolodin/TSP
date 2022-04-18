@@ -17,7 +17,7 @@
     Моя недвижимость
 </h1>
 <form action="NewEstate" method="post" enctype="multipart/form-data">
-    <p class = "add_button">
+    <p align="right" class = "add_button">
         <button type="submit" name="addEst1">Добавить</button>
     </p>
 </form>

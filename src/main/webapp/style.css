@@ -267,12 +267,20 @@ body {
     background-color: skyblue;
     color:#000000;
 }
-.bar_graph{
+.bar_graph1{
     width: 600px;
     height: 500px;
-    margin:50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin:40px 10px 40px 10px;
+}
+.bar_graph2{
+    width: 600px;
+    height: 500px;
+    margin:100px 10px 40px 10px;
+}
+.bar_graph3{
+    width: 600px;
+    height: 500px;
+    margin:40px 10px 40px 10px;
 }
 .error {
     width: 400px;
@@ -299,4 +307,18 @@ body {
 }
 .error3 a:hover{
     color:#008080;
+}
+.text2cols-item {
+    white-space: normal;
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    background: whitesmoke;
+}
+.choose_estate{
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    color: #191970;
+    margin:10px 10px 0 10px;
 }
