@@ -1,5 +1,3 @@
-<%@ page import="dao.UserDao" %>
-<%@ page import="dto.UserInfo" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.time.LocalDate" %><%--
   Created by IntelliJ IDEA.
@@ -15,15 +13,15 @@
     <title> Вход </title>
 </head>
 <body>
-<form action = "${pageContext.request.contextPath}/treatment" method="post" enctype="multipart/form-data" class="enter" >
+<form action = "EnterServlet" method="post" class="enter" >
     <p class="enter">
         <label for = "login">Логин</label><br>
-        <input type="text" id="login" name="LOGIN" ><br>
+        <input type="text" id="login" name="login" ><br>
         <label for="password">Пароль</label><br>
-        <input type="password" name="Password" id="password"><br>
+        <input type="password" name="password" id="password"><br>
         <p class="ent_button enter_and_reg">
             <a  href = "registration"> Зарегистрироваться </a>
-            <button type = "submit" name="but_enter" formaction="error" >Войти</button>
+            <button type = "submit" name="but_enter" >Войти</button>
         </p>
     </p>
 </form>

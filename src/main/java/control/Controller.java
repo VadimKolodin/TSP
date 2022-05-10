@@ -99,10 +99,13 @@ public class Controller {
 
     public void createUser(User user, UserInfo info) throws SQLException {
         if (user.getLogin()==null || user.getPassword() ==null){
-            throw new IllegalArgumentException("Not all info was written");
+            throw new IllegalArgumentException("Логин или пароль не заполнены");
         }
-        if (info.getName() == null || info.getRegd()==null || info.getName() == null){
-            throw new IllegalArgumentException("Not all info was written");
+        if (info.getName() == null || info.getRegd()==null){
+            throw new IllegalArgumentException("ФИО не заполнено");
+        }
+        if (!model.isLoginUnique(user.getLogin())){
+            throw new IllegalArgumentException("Такой логин уже есть");
         }
         UploadService.createUser(user, info);
         model.addUser(user, info);
@@ -290,9 +293,9 @@ public class Controller {
     public String getEstateImage(int eid){
         File image = new File("src\\main\\webapp\\real_estates\\images\\"+eid+".jpg");
         if (image.exists()){
-            return image.getAbsolutePath();
+            return "\\real_estates\\images\\"+eid+".jpg";
         } else {
-            return new File("src\\main\\webapp\\real_estates\\images\\default.jpg").getAbsolutePath();
+            return  "\\real_estates\\images\\default.jpg";
         }
     }
 

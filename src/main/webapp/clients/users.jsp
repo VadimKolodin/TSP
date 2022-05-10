@@ -1,4 +1,6 @@
-<%--
+<%@ page import="models.dto.User" %>
+<%@ page import="control.Controller" %>
+<%@ page import="models.dto.UserInfo" %><%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 23.03.2022
@@ -13,10 +15,13 @@
 </head>
 <body>
 <jsp:include page="/menu/menu.jsp"></jsp:include>
+
     <ul class="list_users">
-        <%for(int i=1; i<10;++i){%>
+        <%for(User user: Controller.getInstance().getAllUsers()){
+            UserInfo info = Controller.getInstance().getUserInfo(user.getUid());
+        %>
         <li>
-            <a href="userinfo">Иванов Иван Иванович</a>
+            <a href="userinfo?usid=<%=user.getUid()%>"><%=info.getName()%></a>
         </li>
         <%}%>
     </ul>

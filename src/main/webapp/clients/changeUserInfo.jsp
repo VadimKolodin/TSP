@@ -22,7 +22,7 @@
             <label for = "password2">Повторите пароль</label><br>
             <input type="password" id="password2" name="Password2" ><br>
             <label for="description">О себе</label><br>
-            <input type="text" id="description" name="depiction" value="О себе..."><br>
+            <textarea class="text_area" id="description" name="depiction" placeholder="О себе..."></textarea><br>
         </p>
         <button type="submit" name="EditInfo" class="edit_info_but">Сохранить изменения</button>
     </form>

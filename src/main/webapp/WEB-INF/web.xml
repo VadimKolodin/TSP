@@ -31,6 +31,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>WrongRegistration</servlet-name>
+        <jsp-file>/signification/WrongRegistration.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WrongRegistration</servlet-name>
+        <url-pattern>/registrationError/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>userinfo</servlet-name>
         <jsp-file>/clients/userinfo.jsp</jsp-file>
     </servlet>
@@ -128,4 +138,18 @@
         <servlet-name>changeUserInfo</servlet-name>
         <url-pattern>/changeUserInfo/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WrongEnter</servlet-name>
+        <jsp-file>/signification/WrongEnter.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WrongEnter</servlet-name>
+        <url-pattern>/enterError/*</url-pattern>
+    </servlet-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.html</location>
+    </error-page>
 </web-app>

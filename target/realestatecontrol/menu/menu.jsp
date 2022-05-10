@@ -13,7 +13,11 @@
 </head>
 <body>
 <p align="right" class="enter_and_reg">
+    <%
+    if(request.getSession().getAttribute("user")==null){
+    %>
     <a href = "enter">Вход</a> |
+    <%}%>
     <a href = "userinfo"><nobr>Моя страница</nobr></a>
 </p>
 <hr>

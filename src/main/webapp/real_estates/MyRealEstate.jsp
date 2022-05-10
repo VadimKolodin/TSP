@@ -1,4 +1,4 @@
-<%--
+<%@ page import="control.Controller" %><%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 24.03.2022
@@ -77,7 +77,7 @@
             <%}%>
         </div>
         <div class="tab-pane fade" id="outcome">
-            <form action="NewEstate">
+            <form action="editSpending">
                 <button type="submit" name="addOutcome">Добавить</button>
             </form>
             <%for(int i=1; i<6;++i){%>

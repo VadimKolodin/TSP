@@ -55,6 +55,18 @@ body {
 .enter input{
     font-size: 30px;
 }
+.enter input[type="submit"]{
+    width: 90px;
+    height: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+    color:#191970;
+}
+.enter input[type="submit"]:hover{
+    background-color: skyblue;
+    color:#000000;
+}
 .ent_button button{
     width: 90px;
     height: 30px;
@@ -267,12 +279,10 @@ body {
     background-color: skyblue;
     color:#000000;
 }
-.bar_graph{
+.bar_graph1{
     width: 600px;
     height: 500px;
-    margin:50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin:40px 10px 40px 10px;
 }
 .error {
     width: 400px;
@@ -299,4 +309,73 @@ body {
 }
 .error3 a:hover{
     color:#008080;
+}
+.text2cols-item {
+    white-space: normal;
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    background: whitesmoke;
+}
+.choose_estate{
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    color: #191970;
+    margin:10px 10px 0 10px;
+}
+.text_area{
+    width: 375px;
+    min-width: 325px;
+    min-height: 190px;
+    font-size: 25px;
+    color: #191970;
+}
+.result_values{
+    margin: 10px 10px 0 10px;
+    font-size: 20px;
+    color: #191970;
+}
+.result_values2{
+    margin: 70px 10px 0 10px;
+    font-size: 20px;
+    color: #191970;
+}
+
+
+
+
+
+
+
+*{
+    font-family: Areal;
+}
+.b-popup{
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.4);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+}
+.b-popup .b-popup-content{
+    margin:7cm 8cm 8cm 15.5cm;
+    width:8.75cm;
+    height: 4cm;
+    padding:10px;
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0 0 15px #000;
+    font-size: 18px;
+    color: #191970;
+}
+
+.b-popup-content a{
+    margin: 3cm 0 0 7cm;
+    text-decoration: none;
+    color: #191970;
+}
+.b-popup-content a:hover{
+    color:#e53e3e;
 }

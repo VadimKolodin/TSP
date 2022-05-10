@@ -15,6 +15,16 @@ public class Model {
         return new ArrayList<User>(users.values());
     }
 
+    public boolean isLoginUnique(String login){
+        int hash = login.hashCode();
+        for (User user: users.values()){
+            if (user.hashCode()==hash){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public User getUser(int usid){
         return users.get(usid);
     }

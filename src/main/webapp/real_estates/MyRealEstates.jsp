@@ -1,4 +1,7 @@
-<%--
+<%@ page import="models.dto.User" %>
+<%@ page import="control.Controller" %>
+<%@ page import="models.dto.UserInfo" %>
+<%@ page import="models.dto.RealEstate" %><%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 23.03.2022
@@ -21,44 +24,29 @@
         <button type="submit" name="addEst1">Добавить</button>
     </p>
 </form>
-<ul class="list_estates">
-    <li>
-        <a href="estate"><img src="real_estates/images/default.jpg" align="middle" width="250" height="250"></a>
-        <p>
-            <a href="estate">Дом</a> <Br>
-            ул. Петра Первого д. 65
-        </p><Br>
-        <form action = "error" method="get">
-            <div align="right">
-                <button type="submit" name="deleteEst">Удалить</button>
-            </div>
-        </form>
-    </li>
-    <li>
-        <a href="estate"><img src="real_estates/images/apartment1.jpg" align="middle" width="250" height="250"></a>
-        <p>
-            <a href="estate">Квартира</a> <Br>
-            ул. Съездовская д.8 кв.103
-        </p><Br>
-        <form action = "error" method="get">
-            <div align="right">
-                <button>Удалить</button>
-            </div>
-        </form>
+<%
+    User user = Controller.getInstance().getUser(Integer.parseInt(pageContext.getRequest().getParameter("usid")));
+    UserInfo info= Controller.getInstance().getUserInfo(user.getUid());
 
-    </li>
+%>
+<ul class="list_estates">
+    <% for(RealEstate estates:Controller.getInstance().getAllEstateUser(user.getUid())){%>
     <li>
-        <a href="estate"><img src="real_estates/images/house1.jpg" align="middle" width="250" height="250"></a>
+        <a href="estate?eid=<%=estates.getEid()%>"><img src="<%=Controller.getInstance().getEstateImage(estates.getEid())%>" align="middle" width="250" height="250"></a>
         <p>
-            <a href="estate">Дом</a> <Br>
-            пос. Курганский ул. Пушкина д.31
+            <a href="estate?eid=<%=estates.getEid()%>"><%=estates.getType()%></a> <Br>
+            <%=estates.getAddress()%>
         </p><Br>
-        <form action = "treatment" method="get">
             <div align="right">
-                <button>Удалить</button>
+                <button type="submit" value="<%=estates.getEid()%>" onclick="deleteEstate(this)">Удалить</button>
             </div>
-        </form>
     </li>
+    <%}%>
 </ul>
+<script>
+    function deleteEstate(element){
+        element.parentNode.parentNode.hidden=true;
+    }
+</script>
 </body>
 </html>

@@ -151,13 +151,33 @@
             <option value="Дом2">Дом2</option>
         </select>
         <br>
+        <p class="result_values">
+            Сумма доходов: 33.65 тыс.рублей<br>
+            Сумма расходов: 25.477 тыс.рублей<br>
+            Разница: 10.173 тыс.рублей<br>
+        </p>
         <div  id="comeMonth_estate" class="bar_graph1"></div>
+        <p class="result_values">
+            Сумма доходов: 300.636 тыс.рублей<br>
+            Сумма расходов: 265.731 тыс.рублей<br>
+            Разница: 34.905 тыс.рублей<br>
+        </p>
         <div  id="comeYear_estate" class="bar_graph1"></div>
 
     </div>
     <div class="text2cols-item">
-        <div  id="comeMonth" class="bar_graph2"></div>
-        <div  id="comeYear" class="bar_graph3"></div>
+        <p class="result_values2">
+            Сумма доходов: 33.65 тыс.рублей<br>
+            Сумма расходов: 25.477 тыс.рублей<br>
+            Разница: 10.173 тыс.рублей<br>
+        </p>
+        <div  id="comeMonth" class="bar_graph1"></div>
+        <p class="result_values">
+            Сумма доходов: 300.636 тыс.рублей<br>
+            Сумма расходов: 265.731 тыс.рублей<br>
+            Разница: 34.905 тыс.рублей<br>
+        </p>
+        <div  id="comeYear" class="bar_graph1"></div>
     </div>
 </body>
 </html>

@@ -1,4 +1,6 @@
-<%--
+<%@ page import="models.dto.User" %>
+<%@ page import="control.Controller" %>
+<%@ page import="models.dto.UserInfo" %><%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 21.03.2022
@@ -16,11 +18,18 @@
     <button type="button"  class="user_info_but">
         <a href="changeUserInfo">Редактировать</a></button>
     <p class="user_info">
+        <%User user = (User)request.getSession().getAttribute("user");
+        UserInfo info = Controller.getInstance().getUserInfo(user.getUid());
+        %>
         <label for="name">ФИО</label><br>
-        <input type="text" id="name" name="FIO" disabled="disabled" value="Иванов Иван Иванович"><br>
+        <input type="text" id="name" name="FIO" disabled="disabled" value="<%=info.getName()%>"><br>
+        <label for="datareg">Дата регистрации</label><br>
+        <input type="date" id="datareg" name="Regd" disabled="disabled" value="<%=info.getRegd()%>"><br>
+        <%if(info.getDesc()!=null){%>
         <label for="description">О себе</label><br>
-        <input type="text" id="description" name="depiction" disabled="disabled" height="200" value="О себе..."><br>
-        <a href="estates">Недвижимость пользователя</a>
+        <textarea class="text_area" name="depiction" id="description" disabled="disabled"><%=info.getDesc()%></textarea><br>
+        <%}%>
+        <a href="estates?usid=<%=user.getUid()%>">Недвижимость пользователя</a>
     </p>
 
 </body>

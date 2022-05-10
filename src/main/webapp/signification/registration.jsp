@@ -1,7 +1,5 @@
 <%@ page import="java.time.LocalDate" %>
-<%@ page import="dto.UserInfo" %>
-<%@ page import="dao.UserDao" %>
-<%@ page import="dto.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 20.03.2022
@@ -15,19 +13,16 @@
     <title> Регистрация </title>
 </head>
 <body>
-<form action = "error" method="post" enctype="multipart/form-data" class="enter reg_button" >
+<form action = "RegistrationServlet" method="post" class="enter" >
     <label for = "login">Логин</label><br>
-    <input type="text" id="login" name="Login"><br>
+    <input type="text" id="login" name="login"><br>
     <label for = "password1">Пароль</label><br>
-    <input type="password" id="password1" name="Password1"><br>
+    <input type="password" id="password1" name="password1"><br>
     <label for = "password2">Повторите пароль</label><br>
-    <input type="password" id="password2" name="Password2"><br>
+    <input type="password" id="password2" name="password2"><br>
     <label for = "name">ФИО</label><br>
-    <input type="text" name="FIO" id="name"><br>
-    <p>
-        <button type = "submit" name="submit2" formaction="enter" >ОК</button>
-    </p>
+    <input type="text" name="FIO" id="name"><br><br>
+    <input type = "submit" name="submit2" value="OK"><br>
 </form>
-
 </body>
 </html>

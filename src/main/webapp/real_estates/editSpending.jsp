@@ -12,6 +12,7 @@
     <style><%@include file="/style.css"%></style>
 </head>
 <body>
+<jsp:include page="/menu/menu.jsp"></jsp:include>
 <form action = "error" method="post" enctype="multipart/form-data" class="user_info spend_button" >
     <label for="type">Название:</label><br>
     <input type="text" id="type" name="name" ><br>
@@ -22,7 +23,7 @@
     <label for="date">Дата</label><br>
     <input type="date" name="date" id="date">
     <p>
-        <button type = "submit" name="submit3" formaction="MyRealEstate" >ОК</button>
+        <button type = "submit" name="submit3" formaction="error" >ОК</button>
     </p>
 </form>
 </body>
