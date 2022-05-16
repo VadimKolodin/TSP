@@ -20,6 +20,14 @@ public class RealEstate implements Serializable {
         this.address = address;
     }
 
+    public RealEstate(Integer eid, Integer uid, String type, String address, EstateStatus status) {
+        this.eid = eid;
+        this.usid = uid;
+        this.type = type;
+        this.address = address;
+        this.status=status;
+    }
+
     public List<Income> getAllIncome(){
         ArrayList<Income> income = new ArrayList<Income>(incomes.values());
         Collections.sort(income);
@@ -116,6 +124,6 @@ public class RealEstate implements Serializable {
     }
 
     public RealEstate clone(){
-        return new RealEstate(eid, usid, type, address);
+        return new RealEstate(eid, usid, type, address, status);
     }
 }

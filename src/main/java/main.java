@@ -5,13 +5,14 @@ import control.stat.MonthDeltaValue;
 import models.dto.User;
 
 
+import java.io.File;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class main {
     public static void main(String[] args) throws SQLException {
 
-        System.exit(0);
+
     }
 }
 

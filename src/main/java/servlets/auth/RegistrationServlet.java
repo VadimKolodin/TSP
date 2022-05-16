@@ -1,4 +1,4 @@
-package servlets;
+package servlets.auth;
 
 import control.Controller;
 import models.dto.User;

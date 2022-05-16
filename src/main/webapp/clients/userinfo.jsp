@@ -15,12 +15,18 @@
 </head>
 <body>
     <jsp:include page="/menu/menu.jsp"></jsp:include>
+    <%User user = (User)request.getSession().getAttribute("user");
+        UserInfo info;
+        if((request.getParameter("usid")!=null)&&(Integer.parseInt(request.getParameter("usid"))!=user.getUid())){
+            info=Controller.getInstance().getUserInfo(Integer.parseInt(request.getParameter("usid")));
+        }
+        else {
+            info= Controller.getInstance().getUserInfo(user.getUid());
+    %>
     <button type="button"  class="user_info_but">
         <a href="changeUserInfo">Редактировать</a></button>
+    <%}%>
     <p class="user_info">
-        <%User user = (User)request.getSession().getAttribute("user");
-        UserInfo info = Controller.getInstance().getUserInfo(user.getUid());
-        %>
         <label for="name">ФИО</label><br>
         <input type="text" id="name" name="FIO" disabled="disabled" value="<%=info.getName()%>"><br>
         <label for="datareg">Дата регистрации</label><br>

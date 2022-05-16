@@ -1,4 +1,8 @@
-<%@ page import="control.Controller" %><%--
+<%@ page import="control.Controller" %>
+<%@ page import="models.dto.User" %>
+<%@ page import="models.dto.RealEstate" %>
+<%@ page import="models.dto.Income" %>
+<%@ page import="models.dto.Outcome" %><%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 24.03.2022
@@ -23,21 +27,38 @@
 </head>
 <body>
 <jsp:include page="/menu/menu.jsp"></jsp:include>
+<%
+    User user = (User)request.getSession().getAttribute("user");
+    RealEstate estate = Controller.getInstance().getRealEstate(user.getUid(), Integer.parseInt(request.getParameter("eid")));
+%>
     <p class="enter_and_reg" align="right">
         <a href = "NewEstate">Редактировать</a>
     </p>
     <img src="real_estates/images/default.jpg" align="left" width="240" height="240"></a>
     <p>
-        Дом
+        <%=estate.getType()%>
     </p>
     <p>
-        ул. Петра Первого д. 65
+        Адрес: <%=estate.getAddress()%>
     </p>
     <p>
-        Статус: в собственности
+        Статус:
+        <%if (estate.getStatus().isSold()){%>
+            продан
+        <%} else {%>
+            в собственности
+        <%}%>
     </p>
     <p>
-        Дополнительная информация
+        Дополнительная информация:<br>
+        Куплена: <%=estate.getStatus().getPurchaseDate()%> за <%=estate.getStatus().getPurchasePrice()%> руб.
+        <%
+        if (estate.getStatus().isSold()){
+        %>
+        Продана: <%=estate.getStatus().getSoldDate()%> за <%=estate.getStatus().getSoldPrice()%> руб.
+        <%
+        }
+        %>
     </p>
     <Br>
     <ul class="nav nav-tabs">
@@ -50,25 +71,25 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade show active" id="income">
-            <form action="editSpending">
+            <form action="addSpending">
                 <button type="submit" name="addIncome">Добавить</button>
             </form>
-            <%for(int i=1; i<6;++i){%>
+            <%for(Income incomes:Controller.getInstance().getAllIncomeEstate(user.getUid(), estate.getEid())){%>
             <div class="flex-container">
                 <div class = "flex-item">
-                    <p class="tab-pane-text">Какие-то доходы <%=i%>...</p>
+                    <p class="tab-pane-text"><%=incomes.getName()%><br> Дата: <%=incomes.getIdate()%> Сумма: <%=incomes.getValue()%></p>
                 </div>
                 <div class = flex-item>
                     <div class = "flex-container-col">
                         <div class = "flex-item">
-                            <form action="editSpending" class="changeBut">
+                            <form action="editSpending?eid=<%=estate.getEid()%>&iid=<%=incomes.getIid()%>" method="post" class="changeBut">
                                 <button type="submit" name="changeIncome">Изменить</button>
                             </form>
                         </div>
                         <div class = "flex-item">
-                            <form action="DeleteIncome" class="deleteBut">
-                                <button type="submit" name="deleteIncome">Удалить</button>
-                            </form>
+
+                                <button type="submit" name="deleteIncome" onclick="deleteIncome(this)">Удалить</button>
+
                         </div>
                     </div>
                 </div>
@@ -80,22 +101,22 @@
             <form action="editSpending">
                 <button type="submit" name="addOutcome">Добавить</button>
             </form>
-            <%for(int i=1; i<6;++i){%>
+            <%for(Outcome outcomes:Controller.getInstance().getAllOutcomeEstate(user.getUid(), estate.getEid())){%>
             <div class="flex-container">
                 <div class = "flex-item">
-                    <p class="tab-pane-text">Какие-то расходы <%=i%>...</p>
+                    <p class="tab-pane-text"><%=outcomes.getName()%><br> Дата: <%=outcomes.getOdate()%> Сумма: <%=outcomes.getValue()%></p>
                 </div>
                 <div class = flex-item>
                     <div class = "flex-container-col">
                         <div class = "flex-item">
-                            <form action="editSpending" class="changeBut">
+                            <form action="editSpending?eid=<%=estate.getEid()%>&oid=<%=outcomes.getOid()%>" method="post" class="changeBut">
                                 <button type="submit" name="changeOutcome">Изменить</button>
                             </form>
                         </div>
                         <div class = "flex-item">
-                            <form action="DeleteOutcome" class="deleteBut">
-                                <button type="submit" name="deleteOutcome">Удалить</button>
-                            </form>
+
+                                <button type="submit" name="deleteOutcome" onclick="deleteOutcome(this)">Удалить</button>
+
                         </div>
                     </div>
                 </div>
@@ -104,5 +125,23 @@
             <%}%>
         </div>
     </div>
+<script>
+    function deleteIncome(element){
+        /*$.ajax({
+            url:'DeleteSpending',
+            method:'POST',
+            data:{
+                usid:$('#usid').val(),
+
+            }
+        });*/
+        element.parentNode.parentNode.parentNode.parentNode.hidden=true;
+        element.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling.hidden=true;
+    }
+    function deleteOutcome(element){
+        element.parentNode.parentNode.parentNode.parentNode.hidden=true;
+        element.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling.hidden=true;
+    }
+</script>
 </body>
 </html>

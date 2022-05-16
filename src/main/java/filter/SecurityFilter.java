@@ -8,7 +8,7 @@ import java.io.IOException;
 @WebFilter("/*")
 public class SecurityFilter extends HttpFilter {
     private final String[] paths={
-            "/MyRealEstates","/userinfo","/estates","/statistics","/users","/estate",
+            "/MyRealEstates","/userinfo","/estates","/statistics","/estate",
             "/NewEstate","/editSpending","/changeUserInfo"
     };
     private boolean doNeedAuth(HttpServletRequest request){

@@ -16,9 +16,12 @@
     <%
     if(request.getSession().getAttribute("user")==null){
     %>
-    <a href = "enter">Вход</a> |
+        <a href = "enter">Вход</a> |
     <%}%>
     <a href = "userinfo"><nobr>Моя страница</nobr></a>
+    <%if(request.getSession().getAttribute("user")!=null){%>
+       | <a href = "quit">Выход</a>
+    <%}%>
 </p>
 <hr>
     <ul class="start_menu">
@@ -29,6 +32,5 @@
     </ul>
 <hr>
     <!-- сделать отступ с ксс-->
-
 </body>
 </html>

@@ -73,7 +73,24 @@ public class Controller {
     public UserInfo getUserInfo(int usid){
         return model.getUser(usid).getInfo().clone();
     }
-
+    public boolean hasPropertyRights(int usid, int eid){
+        User user = model.getUser(usid);
+        return user.getEstate(eid)!=null;
+    }
+    public boolean hasAccessIncome(int usid, int eid, int iid){
+        if (!hasPropertyRights(usid, eid)){
+            return false;
+        }
+        RealEstate estate = model.getUser(usid).getEstate(eid);
+        return estate.getIncome(iid)!=null;
+    }
+    public boolean hasAccessOutcome(int usid, int eid, int oid){
+        if (!hasPropertyRights(usid, eid)){
+            return false;
+        }
+        RealEstate estate = model.getUser(usid).getEstate(eid);
+        return estate.getOutcome(oid)!=null;
+    }
     public List<RealEstate> getAllEstateUser(int usid){
         return model.getUser(usid).getAllEstates();
     }
@@ -291,11 +308,11 @@ public class Controller {
     }
 
     public String getEstateImage(int eid){
-        File image = new File("src\\main\\webapp\\real_estates\\images\\"+eid+".jpg");
+        File image = new File("images\\"+eid+".jpg");
         if (image.exists()){
-            return "\\real_estates\\images\\"+eid+".jpg";
+            return "images\\"+eid+".jpg";
         } else {
-            return  "\\real_estates\\images\\default.jpg";
+            return  "images\\default.jpg";
         }
     }
 
@@ -303,7 +320,7 @@ public class Controller {
         if(!tempFile.exists()||!tempFile.canRead()||!tempFile.isFile()){
             throw new IllegalArgumentException("Файл был поврежден");
         }
-        File image = new File("src\\main\\webapp\\real_estates\\images\\"+eid+".jpg");
+        File image = new File("images\\"+eid+".jpg");
         OutputStream imageStream = new FileOutputStream(image);
         InputStream tempStream = new FileInputStream(tempFile);
         byte[] buffer = new byte[tempStream.available()];
@@ -316,7 +333,7 @@ public class Controller {
         createEstateImage(eid, tempFile);
     }
     public boolean deleteEstateImage(int eid){
-        File image = new File("src\\main\\webapp\\real_estates\\images\\"+eid+".jpg");
+        File image = new File("images\\"+eid+".jpg");
         if (image.exists()){
             return image.delete();
         }

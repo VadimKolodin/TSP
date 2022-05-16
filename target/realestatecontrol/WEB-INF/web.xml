@@ -140,8 +140,28 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>addSpending</servlet-name>
+        <jsp-file>/real_estates/addSpending.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>addSpending</servlet-name>
+        <url-pattern>/addSpending/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>WrongEnter</servlet-name>
         <jsp-file>/signification/WrongEnter.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WrongEditSpending</servlet-name>
+        <url-pattern>/editSpendingError/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WrongEditSpending</servlet-name>
+        <jsp-file>/real_estates/WrongEditSpending.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>

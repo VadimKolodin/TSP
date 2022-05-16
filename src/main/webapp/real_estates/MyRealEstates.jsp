@@ -12,6 +12,7 @@
 <html>
 <head>
     <style><%@include file="/style.css"%></style>
+    <script src="http://code.jquery.com/jquery-2.2.4.js"></script>
     <title>Моя недвижимость</title>
 </head>
 <body>
@@ -25,17 +26,17 @@
     </p>
 </form>
 <%
-    User user = Controller.getInstance().getUser(Integer.parseInt(pageContext.getRequest().getParameter("usid")));
-    UserInfo info= Controller.getInstance().getUserInfo(user.getUid());
+    User user = (User)request.getSession().getAttribute("user");
+    UserInfo info= user.getInfo();
 
 %>
 <ul class="list_estates">
     <% for(RealEstate estates:Controller.getInstance().getAllEstateUser(user.getUid())){%>
     <li>
-        <a href="estate?eid=<%=estates.getEid()%>"><img src="<%=Controller.getInstance().getEstateImage(estates.getEid())%>" align="middle" width="250" height="250"></a>
+        <a href="estate?eid=<%=estates.getEid()%>"><img src="estates/image?eid=<%=estates.getEid()%>" align="middle" width="250" height="250"></a>
         <p>
-            <a href="estate?eid=<%=estates.getEid()%>"><%=estates.getType()%></a> <Br>
-            <%=estates.getAddress()%>
+            <a href="estate?eid=<%=estates.getEid()%>"><%=estates.getType()%> <Br>
+            <%=estates.getAddress()%></a>
         </p><Br>
             <div align="right">
                 <button type="submit" value="<%=estates.getEid()%>" onclick="deleteEstate(this)">Удалить</button>
@@ -43,9 +44,27 @@
     </li>
     <%}%>
 </ul>
+<input type="text" id="usid" name="usid" readonly hidden value="<%=user.getUid()%>">
 <script>
+
     function deleteEstate(element){
-        element.parentNode.parentNode.hidden=true;
+        $.ajax({
+            url: 'estates/delete',
+            method: 'POST',
+            data: {
+                usid: $('#usid').val(),
+                eid: element.value
+            },
+            success: function(response){
+                if (response!=='success'){
+                    alert(response);
+                } else {
+                    element.parentNode.parentNode.hidden=true;
+                }
+            }
+
+        });
+
     }
 </script>
 </body>
