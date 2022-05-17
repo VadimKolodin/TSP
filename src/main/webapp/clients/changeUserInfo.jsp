@@ -1,4 +1,6 @@
-<%--
+<%@ page import="models.dto.User" %>
+<%@ page import="models.dto.UserInfo" %>
+<%@ page import="control.Controller" %><%--
   Created by IntelliJ IDEA.
   User: Яна
   Date: 04.04.2022
@@ -13,16 +15,23 @@
 </head>
 <body>
     <jsp:include page="/menu/menu.jsp"></jsp:include>
-    <form action="error" method="post" enctype="multipart/form-data">
+    <%User user=(User)request.getSession().getAttribute("user");
+    UserInfo info= Controller.getInstance().getUserInfo(user.getUid());
+    %>
+    <form action="ChangeUserInfoServlet" method="post" >
         <p class="user_info">
             <label for = "name">ФИО</label><br>
-            <input type="text" name="FIO" id="name" value="Иван Иванович"><br>
+            <input type="text" name="name" id="name" value="<%=info.getName()%>"><br>
             <label for = "password1">Пароль</label><br>
             <input type="password" id="password1" name="Password1" ><br>
             <label for = "password2">Повторите пароль</label><br>
             <input type="password" id="password2" name="Password2" ><br>
             <label for="description">О себе</label><br>
+            <%if(info.getDesc()!=null){%>
+            <textarea class="text_area" id="description" name="depiction" value="<%=info.getDesc()%>"></textarea><br>
+            <%}else{%>
             <textarea class="text_area" id="description" name="depiction" placeholder="О себе..."></textarea><br>
+            <%}%>
         </p>
         <button type="submit" name="EditInfo" class="edit_info_but">Сохранить изменения</button>
     </form>

@@ -18,7 +18,7 @@ public class EnterServlet extends HttpServlet {
         String password=req.getParameter("password");
         try{
             if(login.equals("")||password.equals("")){
-                throw new IOException("Поля должны быть заполнены.\nПопробуйте еще раз.");
+                throw new IllegalArgumentException("Поля должны быть заполнены.\nПопробуйте еще раз.");
             }
             for(User user: Controller.getInstance().getAllUsers()){
                 if(login.equals(user.getLogin())){
@@ -30,8 +30,8 @@ public class EnterServlet extends HttpServlet {
                     }
                 }
             }
-            throw new IOException("Данный пользователь не существует.\nПроверьте данные и попробуйте еще раз");
-        }catch(IOException message){
+            throw new IllegalArgumentException("Данный пользователь не существует.\nПроверьте данные и попробуйте еще раз");
+        }catch(IllegalArgumentException message){
             req.setAttribute("error",message.getMessage());
             getServletContext().getRequestDispatcher("/enterError").forward(req, resp);
         }

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Яна
-  Date: 16.05.2022
-  Time: 16:09
+  Date: 17.05.2022
+  Time: 19:05
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -26,7 +26,7 @@
 
 <jsp:include page="/real_estates/editSpending.jsp">
     <jsp:param name="eid" value='<%=request.getParameter("eid")%>'/>
-    <jsp:param name="iid" value='<%=request.getParameter("iid")%>'/>
+    <jsp:param name="oid" value='<%=request.getParameter("oid")%>'/>
 </jsp:include>
 <div class="b-popup" id="popup1">
     <div class="b-popup-content" align="center">
@@ -37,3 +37,4 @@
 </div>
 </body>
 </html>
+

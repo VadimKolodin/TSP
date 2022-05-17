@@ -72,13 +72,6 @@ public class UploadService extends DbService{
             if (user.getUid() == null) {
                 throw new IllegalArgumentException("User id cannot be null");
             }
-            if (user.getLogin() != null) {
-                for (String login : userDao.getAllLogins()) {
-                    if (user.getLogin().equals(login)) {
-                        throw new IllegalArgumentException("Such a login already exists");
-                    }
-                }
-            }
             prUser = userDao.update(user);
         }
         if (info != null) {

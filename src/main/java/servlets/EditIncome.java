@@ -15,49 +15,51 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-@WebServlet("EditSpendingServlet")
-public class EditSpending extends HttpServlet {
+@WebServlet("EditIncomeServlet")
+public class EditIncome extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user= (User)req.getSession().getAttribute("user");
         RealEstate estate=Controller.getInstance().getRealEstate(user.getUid(),Integer.parseInt(req.getParameter("eid")));
         Income income;
-        Outcome outcome;
         String name=req.getParameter("name");
-        Double value=Double.parseDouble(req.getParameter("value"));
         String description=req.getParameter("description_come");
         LocalDate date=LocalDate.parse(req.getParameter("date"));
-
         try{
-
-            if(name==""){
+            if(!req.getParameter("value").matches("[^a-zA-z\\[\\]\\?\\*\\-\\+\\\\\\n\\=]+")){
+                throw new NumberFormatException("Вы ввели некорректные данные.\nПоле \"Сумма\" не являтся числом. ");
+            }
+            Double value=Double.parseDouble(req.getParameter("value"));
+            if(name.isEmpty()){
                 throw new IllegalArgumentException("Вы ввели некорректные данные.\nДанные поля \"Название\" должны быть заполнены. Попробуйте снова.\n");
             }
-            if(!name.matches("[^\\[\\]\\?\\*\\-\\+\\\\\\/ \\n\\=]+")){
+            if(!name.matches("[^\\[\\]\\?\\*\\-\\+\\\\\\n\\=]+")){
                 throw new IllegalArgumentException("Вы ввели некорректные данные.\nПоле \"Название\" не должно содержать\"[],?,*,-,+,\\,/,=\"." +
                         " Попробуйте снова.\n");
             }
+            if(value<1){
+                throw new IllegalArgumentException("Вы ввели некорректные данные.\nПоле \"Сумма\" должно быть больше 1");
+            }
             if(description!=null){
-                if(!description.isEmpty()&&!(description.matches("[^\\[\\]\\?\\*\\-\\+\\\\\\/ \\n\\=]+"))) {
+                if(!description.isEmpty()&&!(description.matches("[^\\[\\]\\?\\*\\-\\+\\\\\\n\\=]+"))) {
                     throw new IllegalArgumentException("Вы ввели некорректные данные.\nПоле \"Описание\" не должно содержать\"[],?,*,-,+,\\,/,=\"." +
                             " Попробуйте снова.\n");
                 }
             }
-            if(req.getParameter("iid")!=null){
-                income=new Income(Integer.parseInt(req.getParameter("iid")),estate.getEid(),date,name,value,description);
-                Controller.getInstance().changeIncome(user.getUid(),income);
-                resp.sendRedirect("estate?eid="+estate.getEid());
+            if(req.getParameter("iid")!=null) {
+                income = new Income(Integer.parseInt(req.getParameter("iid")), estate.getEid(), date, name, value, description);
+                Controller.getInstance().changeIncome(user.getUid(), income);
+                resp.sendRedirect("estate?eid=" + estate.getEid());
             }
-            else{
-                outcome=new Outcome(Integer.parseInt(req.getParameter("oid")),estate.getEid(),date,name,value,description);
-                Controller.getInstance().changeOutcome(user.getUid(),outcome);
-                resp.sendRedirect("estate?eid="+estate.getEid());
-            }
-
+        }catch(NumberFormatException e){
+            req.setAttribute("error",e.getMessage());
+            getServletContext().getRequestDispatcher("/editSpendingError?eid="+ estate.getEid()+"&iid="+req.getParameter("iid")).forward(req, resp);
         }catch(IllegalArgumentException|SQLException message){
             req.setAttribute("error", message.getMessage());
-            getServletContext().getRequestDispatcher("/WrongEditSpending").forward(req, resp);
+            //resp.sendRedirect("/WrongEditSpending?eid=" + estate.getEid()+"&iid="+req.getParameter("iid"));
+            getServletContext().getRequestDispatcher("/editSpendingError?eid="+ estate.getEid()+"&iid="+req.getParameter("iid")).forward(req, resp);
         }
+
 
     }
 }

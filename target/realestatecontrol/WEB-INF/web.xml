@@ -153,21 +153,30 @@
         <servlet-name>WrongEnter</servlet-name>
         <jsp-file>/signification/WrongEnter.jsp</jsp-file>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>WrongEditSpending</servlet-name>
-        <url-pattern>/editSpendingError/*</url-pattern>
+        <servlet-name>WrongEnter</servlet-name>
+        <url-pattern>/enterError/*</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>WrongEditSpending</servlet-name>
         <jsp-file>/real_estates/WrongEditSpending.jsp</jsp-file>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>WrongEnter</servlet-name>
-        <url-pattern>/enterError/*</url-pattern>
+    <servlet-name>WrongEditSpending</servlet-name>
+    <url-pattern>/editSpendingError/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WrongOutcomeEditSpending</servlet-name>
+        <jsp-file>/real_estates/WrongOutcome.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WrongOutcomeEditSpending</servlet-name>
+        <url-pattern>/editOutcomeError/*</url-pattern>
+    </servlet-mapping>
+
+
     <error-page>
         <error-code>404</error-code>
         <location>/error.html</location>

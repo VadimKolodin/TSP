@@ -27,28 +27,28 @@ public class RegistrationServlet extends HttpServlet {
         LocalDate ldate=LocalDate.now();
         try{
             if((name=="")||(login=="")){
-                throw new IOException("Вы ввели некорректные данные.\nДанные поля должны быть заполнены. Попробуйте снова.\n");
+                throw new IllegalArgumentException("Вы ввели некорректные данные.\nДанные поля должны быть заполнены. Попробуйте снова.\n");
             }
             if(!login.matches("[^\\[\\]\\?\\*\\-\\+\\\\\\/ \\n\\=]+")){
-                throw new IOException("Вы ввели некорректные данные.\nЛогин не должен содержать\"[],?,*,-,+,\\,/,=\"." +
+                throw new IllegalArgumentException("Вы ввели некорректные данные.\nЛогин не должен содержать\"[],?,*,-,+,\\,/,=\"." +
                         " Попробуйте снова.\n");
             }
             if(!password1.matches("[^\\[\\]\\?\\*\\-\\+\\\\\\/ \\n\\=]+")){
-                throw new IOException("Вы ввели некорректные данные.\nПароль не должен содержать\"[],?,*,-,+,\\,/,=\"." +
+                throw new IllegalArgumentException("Вы ввели некорректные данные.\nПароль не должен содержать\"[],?,*,-,+,\\,/,=\"." +
                         " Попробуйте снова.\n");
             }
             if(!password1.equals(password2)){
-                throw new IOException("Вы ввели некорректные данные.\nПароли не совпадают. Попробуйте снова.\n");
+                throw new IllegalArgumentException("Вы ввели некорректные данные.\nПароли не совпадают. Попробуйте снова.\n");
             }
             for(User user: Controller.getInstance().getAllUsers()){
                 if(login.equals(user.getLogin())){
-                    throw new IOException("Вы ввели некорректные данные.\nДанный логин занят. Попробуйте снова.\n");
+                    throw new IllegalArgumentException("Вы ввели некорректные данные.\nДанный логин занят. Попробуйте снова.\n");
                 }
             }
             Controller.getInstance().createUser(new User(usid, login, password1.hashCode()), new UserInfo(usid, name, ldate, null));
 
 
-        }catch(SQLException|IOException message){
+        }catch(SQLException|IllegalArgumentException message){
             req.setAttribute("error", message.getMessage());
             getServletContext().getRequestDispatcher("/registrationError").forward(req, resp);
         }

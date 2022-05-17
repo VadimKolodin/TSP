@@ -77,7 +77,12 @@
             <%for(Income incomes:Controller.getInstance().getAllIncomeEstate(user.getUid(), estate.getEid())){%>
             <div class="flex-container">
                 <div class = "flex-item">
-                    <p class="tab-pane-text"><%=incomes.getName()%><br> Дата: <%=incomes.getIdate()%> Сумма: <%=incomes.getValue()%></p>
+                    <p class="tab-pane-text"><%=incomes.getName()%><br> Дата: <%=incomes.getIdate()%> Сумма: <%=incomes.getValue()%>
+                        <%if(incomes.getComment()!=null&&!incomes.getComment().isEmpty()){%>
+                        <br>
+                        Комментарий: <%=incomes.getComment()%>
+                        <%}%>
+                    </p>
                 </div>
                 <div class = flex-item>
                     <div class = "flex-container-col">
@@ -104,7 +109,12 @@
             <%for(Outcome outcomes:Controller.getInstance().getAllOutcomeEstate(user.getUid(), estate.getEid())){%>
             <div class="flex-container">
                 <div class = "flex-item">
-                    <p class="tab-pane-text"><%=outcomes.getName()%><br> Дата: <%=outcomes.getOdate()%> Сумма: <%=outcomes.getValue()%></p>
+                    <p class="tab-pane-text"><%=outcomes.getName()%><br> Дата: <%=outcomes.getOdate()%> Сумма: <%=outcomes.getValue()%>
+                    <%if(outcomes.getOcomment()!=null&&!outcomes.getOcomment().isEmpty()){%>
+                        <br>
+                        Комментарий: <%=outcomes.getOcomment()%>
+                        <%}%>
+                    </p>
                 </div>
                 <div class = flex-item>
                     <div class = "flex-container-col">
