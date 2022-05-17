@@ -150,6 +150,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>addOutcome</servlet-name>
+        <jsp-file>/real_estates/addOutcome.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>addOutcome</servlet-name>
+        <url-pattern>/addOutcome/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>WrongEnter</servlet-name>
         <jsp-file>/signification/WrongEnter.jsp</jsp-file>
     </servlet>
@@ -175,6 +185,25 @@
         <servlet-name>WrongOutcomeEditSpending</servlet-name>
         <url-pattern>/editOutcomeError/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WrongChanheUserInfo</servlet-name>
+        <jsp-file>/clients/WrongChangeUserInfo.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WrongChanheUserInfo</servlet-name>
+        <url-pattern>/ChangeUserInfoError/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WrongAddIncome</servlet-name>
+        <jsp-file>/real_estates/WrongAddIncome.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WrongAddIncome</servlet-name>
+        <url-pattern>/AddIncomeError/*</url-pattern>
+    </servlet-mapping>
+
 
 
     <error-page>

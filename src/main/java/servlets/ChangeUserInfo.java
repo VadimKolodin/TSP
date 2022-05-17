@@ -43,11 +43,11 @@ public class ChangeUserInfo extends HttpServlet {
             }
             UserInfo info=new UserInfo(user.getUid(),name,user.getInfo().getRegd(),desc);
             Controller.getInstance().changeUser(user,info);
-            resp.sendRedirect("userinfo");
-        }catch(SQLException message){
-            //req.setAttribute("error", message.getMessage());
+            resp.sendRedirect("changeUserInfo");
+        }catch(IllegalArgumentException|SQLException message){
+            req.setAttribute("error", message.getMessage());
             //resp.sendRedirect("/WrongEditSpending");
-            //getServletContext().getRequestDispatcher("/WrongEditSpending").forward(req, resp);
+            getServletContext().getRequestDispatcher("/ChangeUserInfoError").forward(req, resp);
         }
     }
 }

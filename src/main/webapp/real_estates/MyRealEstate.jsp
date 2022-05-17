@@ -71,7 +71,7 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade show active" id="income">
-            <form action="addSpending">
+            <form action="addSpending?eid=<%=estate.getEid()%>" method="post">
                 <button type="submit" name="addIncome">Добавить</button>
             </form>
             <%for(Income incomes:Controller.getInstance().getAllIncomeEstate(user.getUid(), estate.getEid())){%>
@@ -103,7 +103,7 @@
             <%}%>
         </div>
         <div class="tab-pane fade" id="outcome">
-            <form action="editSpending">
+            <form action="addOutcome?eid=<%=estate.getEid()%>" method="post">
                 <button type="submit" name="addOutcome">Добавить</button>
             </form>
             <%for(Outcome outcomes:Controller.getInstance().getAllOutcomeEstate(user.getUid(), estate.getEid())){%>

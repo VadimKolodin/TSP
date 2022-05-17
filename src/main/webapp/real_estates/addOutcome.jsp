@@ -3,22 +3,23 @@
 <%@ page import="control.Controller" %><%--
   Created by IntelliJ IDEA.
   User: Яна
-  Date: 15.05.2022
-  Time: 15:27
+  Date: 18.05.2022
+  Time: 0:15
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Добавить доходы</title>
+    <title>Добавить расходы</title>
     <style><%@include file="/style.css"%></style>
 </head>
 <body>
 <jsp:include page="/menu/menu.jsp"></jsp:include>
-<%User user=(User)request.getSession().getAttribute("user");
+<%
+    User user=(User)request.getSession().getAttribute("user");
     RealEstate estate= Controller.getInstance().getRealEstate(user.getUid(),Integer.parseInt(request.getParameter("eid")));
 %>
-<form action = "AddIncomeServlet?eid=<%=estate.getEid()%>" method="post" class="user_info spend_button" >
+<form action = "AddOutcomeServlet?eid=<%=estate.getEid()%>" method="post" class="user_info spend_button" >
     <label for="type">Название:</label><br>
     <input type="text" id="type" name="name" ><br>
     <label for="summa"> Сумма: </label> <br>
