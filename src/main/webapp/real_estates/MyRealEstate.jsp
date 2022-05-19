@@ -32,9 +32,9 @@
     RealEstate estate = Controller.getInstance().getRealEstate(user.getUid(), Integer.parseInt(request.getParameter("eid")));
 %>
     <p class="enter_and_reg" align="right">
-        <a href = "NewEstate">Редактировать</a>
+        <a href = "ChangeEstate?eid=<%=estate.getEid()%>">Редактировать</a>
     </p>
-    <img src="real_estates/images/default.jpg" align="left" width="240" height="240"></a>
+    <img src="estates/image?eid=<%=estate.getEid()%>" align="left" width="240" height="240"></a>
     <p>
         <%=estate.getType()%>
     </p>
@@ -74,26 +74,26 @@
             <form action="addSpending?eid=<%=estate.getEid()%>" method="post">
                 <button type="submit" name="addIncome">Добавить</button>
             </form>
-            <%for(Income incomes:Controller.getInstance().getAllIncomeEstate(user.getUid(), estate.getEid())){%>
+            <%for(Income income:Controller.getInstance().getAllIncomeEstate(user.getUid(), estate.getEid())){%>
             <div class="flex-container">
                 <div class = "flex-item">
-                    <p class="tab-pane-text"><%=incomes.getName()%><br> Дата: <%=incomes.getIdate()%> Сумма: <%=incomes.getValue()%>
-                        <%if(incomes.getComment()!=null&&!incomes.getComment().isEmpty()){%>
+                    <p class="tab-pane-text"><%=income.getName()%><br> Дата: <%=income.getIdate()%> Сумма: <%=income.getValue()%>
+                        <%if(income.getComment()!=null&&!income.getComment().isEmpty()){%>
                         <br>
-                        Комментарий: <%=incomes.getComment()%>
+                        Комментарий: <%=income.getComment()%>
                         <%}%>
                     </p>
                 </div>
                 <div class = flex-item>
                     <div class = "flex-container-col">
                         <div class = "flex-item">
-                            <form action="editSpending?eid=<%=estate.getEid()%>&iid=<%=incomes.getIid()%>" method="post" class="changeBut">
+                            <form action="editSpending?eid=<%=estate.getEid()%>&iid=<%=income.getIid()%>" method="post" class="changeBut">
                                 <button type="submit" name="changeIncome">Изменить</button>
                             </form>
                         </div>
                         <div class = "flex-item">
 
-                                <button type="submit" name="deleteIncome" onclick="deleteIncome(this)">Удалить</button>
+                                <button type="submit" name="deleteIncome" value="<%=income.getIid()%>" onclick="deleteIncome(this)">Удалить</button>
 
                         </div>
                     </div>
@@ -106,26 +106,26 @@
             <form action="addOutcome?eid=<%=estate.getEid()%>" method="post">
                 <button type="submit" name="addOutcome">Добавить</button>
             </form>
-            <%for(Outcome outcomes:Controller.getInstance().getAllOutcomeEstate(user.getUid(), estate.getEid())){%>
+            <%for(Outcome outcome:Controller.getInstance().getAllOutcomeEstate(user.getUid(), estate.getEid())){%>
             <div class="flex-container">
                 <div class = "flex-item">
-                    <p class="tab-pane-text"><%=outcomes.getName()%><br> Дата: <%=outcomes.getOdate()%> Сумма: <%=outcomes.getValue()%>
-                    <%if(outcomes.getOcomment()!=null&&!outcomes.getOcomment().isEmpty()){%>
+                    <p class="tab-pane-text"><%=outcome.getName()%><br> Дата: <%=outcome.getOdate()%> Сумма: <%=outcome.getValue()%>
+                    <%if(outcome.getOcomment()!=null&&!outcome.getOcomment().isEmpty()){%>
                         <br>
-                        Комментарий: <%=outcomes.getOcomment()%>
+                        Комментарий: <%=outcome.getOcomment()%>
                         <%}%>
                     </p>
                 </div>
                 <div class = flex-item>
                     <div class = "flex-container-col">
                         <div class = "flex-item">
-                            <form action="editSpending?eid=<%=estate.getEid()%>&oid=<%=outcomes.getOid()%>" method="post" class="changeBut">
+                            <form action="editSpending?eid=<%=estate.getEid()%>&oid=<%=outcome.getOid()%>" method="post" class="changeBut">
                                 <button type="submit" name="changeOutcome">Изменить</button>
                             </form>
                         </div>
                         <div class = "flex-item">
 
-                                <button type="submit" name="deleteOutcome" onclick="deleteOutcome(this)">Удалить</button>
+                                <button type="submit" name="deleteOutcome" value="<%=outcome.getOid()%>" onclick="deleteOutcome(this)">Удалить</button>
 
                         </div>
                     </div>
@@ -135,22 +135,48 @@
             <%}%>
         </div>
     </div>
+<input type="text" id="usid" name="usid" readonly hidden value="<%=user.getUid()%>">
+<input type="text" id="eid" name="eid" readonly hidden value="<%=estate.getEid()%>">
 <script>
     function deleteIncome(element){
-        /*$.ajax({
-            url:'DeleteSpending',
+        $.ajax({
+            url:'DeleteIncomeServlet',
             method:'POST',
             data:{
                 usid:$('#usid').val(),
+                eid:$('#eid').val(),
+                iid:element.value
 
+            },
+            success:function (response){
+                if (response!=='success'){
+                    alert(response);
+                } else {
+                    element.parentNode.parentNode.parentNode.parentNode.hidden=true;
+                    element.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling.hidden=true;
+                }
             }
-        });*/
-        element.parentNode.parentNode.parentNode.parentNode.hidden=true;
-        element.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling.hidden=true;
+        });
+
     }
     function deleteOutcome(element){
-        element.parentNode.parentNode.parentNode.parentNode.hidden=true;
-        element.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling.hidden=true;
+        $.ajax({
+            url:'DeleteOutcomeServlet',
+            method:'POST',
+            data:{
+                usid:$('#usid').val(),
+                eid:$('#eid').val(),
+                oid:element.value
+            },
+            success:function (response){
+                if (response!=='success'){
+                    alert(response);
+                } else {
+                    element.parentNode.parentNode.parentNode.parentNode.hidden=true;
+                    element.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling.hidden=true;
+                }
+            }
+        });
     }
 </script>
 </body>

@@ -312,7 +312,7 @@ public class Controller {
         if (image.exists()){
             return "images\\"+eid+".jpg";
         } else {
-            return  "images\\default.jpg";
+            return null;
         }
     }
 

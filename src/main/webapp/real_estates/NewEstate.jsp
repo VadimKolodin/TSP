@@ -13,7 +13,7 @@
 </head>
 <body>
 <jsp:include page="/menu/menu.jsp"></jsp:include>
-    <form action="error"  method="post" enctype="multipart/form-data" class="user_info">
+<form action="AddEstateServlet"  method="post" class="user_info">
         <label for="type">Название:</label><br>
         <input type="text" id="type" name="typeEstate"><br>
         <label for="address">Адрес:</label><br>

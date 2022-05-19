@@ -32,10 +32,14 @@
         <label for="datareg">Дата регистрации</label><br>
         <input type="date" id="datareg" name="Regd" disabled="disabled" value="<%=info.getRegd()%>"><br>
         <%if(info.getDesc()!=null){%>
-        <label for="description">О себе</label><br>
-        <textarea class="text_area" name="depiction" id="description" disabled="disabled"><%=info.getDesc()%></textarea><br>
+            <label for="description">О себе</label><br>
+            <textarea class="text_area" name="depiction" id="description" disabled="disabled"><%=info.getDesc()%></textarea><br>
+        <%}
+        if((request.getParameter("usid")!=null)&&(Integer.parseInt(request.getParameter("usid"))!=user.getUid())){%>
+            <a href="estates?usid=<%=Integer.parseInt(request.getParameter("usid"))%>">Недвижимость пользователя</a>
+        <%}else{%>
+            <a href="estates">Недвижимость пользователя</a>
         <%}%>
-        <a href="estates?usid=<%=user.getUid()%>">Недвижимость пользователя</a>
     </p>
 
 </body>

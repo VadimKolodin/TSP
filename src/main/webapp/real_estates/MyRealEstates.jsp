@@ -18,20 +18,36 @@
 <body>
 <jsp:include page="/menu/menu.jsp"></jsp:include>
 <h1 align="center" class="color_header_1">
+    <%if(request.getParameter("usid")!=null){%>
+    Недвижимость пользователя: <%=Controller.getInstance().getUserInfo(Integer.parseInt(request.getParameter("usid"))).getName()%>
+    <%}else{%>
     Моя недвижимость
+    <%}%>
 </h1>
-<form action="NewEstate" method="post" enctype="multipart/form-data">
+<%if(request.getParameter("usid")==null){%>
+<form action="NewEstate" method="post">
     <p align="right" class = "add_button">
         <button type="submit" name="addEst1">Добавить</button>
     </p>
 </form>
-<%
+<%}
     User user = (User)request.getSession().getAttribute("user");
     UserInfo info= user.getInfo();
 
 %>
 <ul class="list_estates">
-    <% for(RealEstate estates:Controller.getInstance().getAllEstateUser(user.getUid())){%>
+    <%if(request.getParameter("usid")!=null&&(Integer.parseInt(request.getParameter("usid"))!=user.getUid())){
+    for(RealEstate estates:Controller.getInstance().getAllEstateUser(Integer.parseInt(request.getParameter("usid")))){%>
+    <li>
+        <a href="UserEstate?usid=<%=Integer.parseInt(request.getParameter("usid"))%>&eid=<%=estates.getEid()%>"><img src="estates/image?eid=<%=estates.getEid()%>" align="middle" width="250" height="250"></a>
+        <p>
+            <a href="estate?eid=<%=estates.getEid()%>"><%=estates.getType()%> <Br>
+                <%=estates.getAddress()%></a>
+        </p><Br>
+    </li>
+    <%}
+    }else{
+    for(RealEstate estates:Controller.getInstance().getAllEstateUser(user.getUid())){%>
     <li>
         <a href="estate?eid=<%=estates.getEid()%>"><img src="estates/image?eid=<%=estates.getEid()%>" align="middle" width="250" height="250"></a>
         <p>
@@ -42,7 +58,8 @@
                 <button type="submit" value="<%=estates.getEid()%>" onclick="deleteEstate(this)">Удалить</button>
             </div>
     </li>
-    <%}%>
+    <%}
+    }%>
 </ul>
 <input type="text" id="usid" name="usid" readonly hidden value="<%=user.getUid()%>">
 <script>

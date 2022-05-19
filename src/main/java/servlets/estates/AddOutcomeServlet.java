@@ -1,7 +1,7 @@
-package servlets;
+package servlets.estates;
 
 import control.Controller;
-import models.dto.Income;
+import models.dto.Outcome;
 import models.dto.RealEstate;
 import models.dto.User;
 
@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-@WebServlet("AddIncomeServlet")
-public class AddIncome extends HttpServlet {
+@WebServlet("AddOutcomeServlet")
+public class AddOutcomeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user=(User)req.getSession().getAttribute("user");
@@ -44,14 +44,14 @@ public class AddIncome extends HttpServlet {
                             " Попробуйте снова.\n");
                 }
             }
-            Income income= new Income(null,estate.getEid(),date,name,value,desc);
-            Controller.getInstance().createIncome(user.getUid(),income);
+            Outcome outcome= new Outcome(null,estate.getEid(),date,name,value,desc);
+            Controller.getInstance().createOutcome(user.getUid(),outcome);
             resp.sendRedirect("estate?eid="+estate.getEid());
 
         }catch(NumberFormatException e){
             req.setAttribute("error",e.getMessage());
             getServletContext().getRequestDispatcher("/AddIncomeError?eid="+ estate.getEid()).forward(req, resp);
-        }catch(IllegalArgumentException|SQLException message){
+        }catch(IllegalArgumentException| SQLException message){
             req.setAttribute("error", message.getMessage());
             //resp.sendRedirect("/WrongEditSpending?eid=" + estate.getEid()+"&iid="+req.getParameter("iid"));
             getServletContext().getRequestDispatcher("/AddIncomeError?eid="+ estate.getEid()).forward(req, resp);

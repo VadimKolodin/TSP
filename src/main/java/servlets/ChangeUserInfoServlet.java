@@ -1,7 +1,6 @@
 package servlets;
 
 import control.Controller;
-import models.dto.Income;
 import models.dto.User;
 import models.dto.UserInfo;
 
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 @WebServlet("ChangeUserInfoServlet")
-public class ChangeUserInfo extends HttpServlet {
+public class ChangeUserInfoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user=(User)req.getSession().getAttribute("user");

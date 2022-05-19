@@ -204,7 +204,23 @@
         <url-pattern>/AddIncomeError/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UserEstate</servlet-name>
+        <jsp-file>/real_estates/userEstate.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserEstate</servlet-name>
+        <url-pattern>/UserEstate/*</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ChangeEstate</servlet-name>
+        <jsp-file>/real_estates/changeEstate.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeEstate</servlet-name>
+        <url-pattern>/ChangeEstate/*</url-pattern>
+    </servlet-mapping>
 
     <error-page>
         <error-code>404</error-code>

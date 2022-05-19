@@ -1,8 +1,7 @@
-package servlets;
+package servlets.estates;
 
 import control.Controller;
 import models.dto.Income;
-import models.dto.Outcome;
 import models.dto.RealEstate;
 import models.dto.User;
 
@@ -15,17 +14,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-@WebServlet("EditIncomeServlet")
-public class EditIncome extends HttpServlet {
+@WebServlet("AddIncomeServlet")
+public class AddIncomeServlet extends HttpServlet {
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user= (User)req.getSession().getAttribute("user");
-        RealEstate estate=Controller.getInstance().getRealEstate(user.getUid(),Integer.parseInt(req.getParameter("eid")));
-        Income income;
-        String name=req.getParameter("name");
-        String description=req.getParameter("description_come");
-        LocalDate date=LocalDate.parse(req.getParameter("date"));
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user=(User)req.getSession().getAttribute("user");
+        RealEstate estate= Controller.getInstance().getRealEstate(user.getUid(),Integer.parseInt(req.getParameter("eid")));
         try{
+            String name=req.getParameter("name");
+            String desc=req.getParameter("description");
+            LocalDate date=LocalDate.parse(req.getParameter("date"));
             if(!req.getParameter("value").matches("[^a-zA-z\\[\\]\\?\\*\\-\\+\\\\\\n\\=]+")){
                 throw new NumberFormatException("Вы ввели некорректные данные.\nПоле \"Сумма\" не являтся числом. ");
             }
@@ -40,26 +38,23 @@ public class EditIncome extends HttpServlet {
             if(value<1){
                 throw new IllegalArgumentException("Вы ввели некорректные данные.\nПоле \"Сумма\" должно быть больше 1");
             }
-            if(description!=null){
-                if(!description.isEmpty()&&!(description.matches("[^\\[\\]\\?\\*\\-\\+\\\\\\n\\=]+"))) {
+            if(desc!=null){
+                if(!desc.isEmpty()&&!(desc.matches("[^\\[\\]\\?\\*\\-\\+\\\\\\n\\=]+"))) {
                     throw new IllegalArgumentException("Вы ввели некорректные данные.\nПоле \"Описание\" не должно содержать\"[],?,*,-,+,\\,/,=\"." +
                             " Попробуйте снова.\n");
                 }
             }
-            if(req.getParameter("iid")!=null) {
-                income = new Income(Integer.parseInt(req.getParameter("iid")), estate.getEid(), date, name, value, description);
-                Controller.getInstance().changeIncome(user.getUid(), income);
-                resp.sendRedirect("estate?eid=" + estate.getEid());
-            }
+            Income income= new Income(null,estate.getEid(),date,name,value,desc);
+            Controller.getInstance().createIncome(user.getUid(),income);
+            resp.sendRedirect("estate?eid="+estate.getEid());
+
         }catch(NumberFormatException e){
             req.setAttribute("error",e.getMessage());
-            getServletContext().getRequestDispatcher("/editSpendingError?eid="+ estate.getEid()+"&iid="+req.getParameter("iid")).forward(req, resp);
+            getServletContext().getRequestDispatcher("/AddIncomeError?eid="+ estate.getEid()).forward(req, resp);
         }catch(IllegalArgumentException|SQLException message){
             req.setAttribute("error", message.getMessage());
             //resp.sendRedirect("/WrongEditSpending?eid=" + estate.getEid()+"&iid="+req.getParameter("iid"));
-            getServletContext().getRequestDispatcher("/editSpendingError?eid="+ estate.getEid()+"&iid="+req.getParameter("iid")).forward(req, resp);
+            getServletContext().getRequestDispatcher("/AddIncomeError?eid="+ estate.getEid()).forward(req, resp);
         }
-
-
     }
 }
