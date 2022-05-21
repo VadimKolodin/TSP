@@ -39,10 +39,10 @@
     <%if(request.getParameter("usid")!=null&&(Integer.parseInt(request.getParameter("usid"))!=user.getUid())){
     for(RealEstate estates:Controller.getInstance().getAllEstateUser(Integer.parseInt(request.getParameter("usid")))){%>
     <li>
-        <a href="UserEstate?usid=<%=Integer.parseInt(request.getParameter("usid"))%>&eid=<%=estates.getEid()%>"><img src="estates/image?eid=<%=estates.getEid()%>" align="middle" width="250" height="250"></a>
+        <img src="estates/image?eid=<%=estates.getEid()%>" align="middle" width="250" height="250">
         <p>
-            <a href="estate?eid=<%=estates.getEid()%>"><%=estates.getType()%> <Br>
-                <%=estates.getAddress()%></a>
+            <%=estates.getType()%> <Br>
+            <%=estates.getAddress()%>
         </p><Br>
     </li>
     <%}

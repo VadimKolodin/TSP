@@ -72,7 +72,7 @@
 
     <servlet>
         <servlet-name>statistics</servlet-name>
-        <jsp-file>/WEB-INF/statistics.jsp</jsp-file>
+        <jsp-file>/statistics/statistics.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>
@@ -202,15 +202,6 @@
     <servlet-mapping>
         <servlet-name>WrongAddIncome</servlet-name>
         <url-pattern>/AddIncomeError/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>UserEstate</servlet-name>
-        <jsp-file>/real_estates/userEstate.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UserEstate</servlet-name>
-        <url-pattern>/UserEstate/*</url-pattern>
     </servlet-mapping>
 
     <servlet>
