@@ -28,7 +28,7 @@ public class EditOutcomeServlet extends HttpServlet {
         String description2=req.getParameter("description_come2");
         LocalDate date2=LocalDate.parse(req.getParameter("date2"));
         try{
-            if(!req.getParameter("value2").matches("[^a-zA-z\\[\\]\\?\\*\\-\\+\\\\\\n\\=]+")){
+            if(!req.getParameter("value2").matches("[^a-zA-Z\\[\\]\\?\\*\\-\\+\\\\\\n\\=]+")){
                 throw new NumberFormatException("Вы ввели некорректные данные.\nПоле \"Сумма\" не являтся числом. ");
             }
             Double value2=Double.parseDouble(req.getParameter("value2"));

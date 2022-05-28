@@ -25,7 +25,7 @@ public class EditIncomeServlet extends HttpServlet {
         String description=req.getParameter("description_come");
         LocalDate date=LocalDate.parse(req.getParameter("date"));
         try{
-            if(!req.getParameter("value").matches("[^a-zA-z\\[\\]\\?\\*\\-\\+\\\\\\n\\=]+")){
+            if(!req.getParameter("value").matches("[^a-zA-Z\\[\\]\\?\\*\\-\\+\\\\\\ \\n\\=]+")){
                 throw new NumberFormatException("Вы ввели некорректные данные.\nПоле \"Сумма\" не являтся числом. ");
             }
             Double value=Double.parseDouble(req.getParameter("value"));

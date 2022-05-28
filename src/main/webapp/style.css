@@ -233,6 +233,11 @@ body {
     font-weight: bold;
     color:#191970;
 }
+.user_info div{
+    font-size: 25px;
+    color:#191970;
+    font-weight: bold;
+}
 .user_info input{
     font-size: 25px;
 }
@@ -378,4 +383,27 @@ body {
 }
 .b-popup-content a:hover{
     color:#e53e3e;
+}
+.main_page div{
+    display: inline-block;
+    margin:40px 60px 20px 80px;
+}
+.main_page a{
+    text-decoration: none;
+    color: #191970;
+    font-size: 25px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 9cm;
+}
+.main_page a:hover{
+    color:#008080;
+}
+.main_page2{
+    font-size: 20px;
+    color: #191970;
+}
+.main_h1{
+    color: #191970;
 }

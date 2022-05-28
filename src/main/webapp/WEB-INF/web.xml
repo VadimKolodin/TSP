@@ -205,6 +205,24 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>WrongAddEstate</servlet-name>
+        <jsp-file>/real_estates/WrongAddEstate.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WrongAddEstate</servlet-name>
+        <url-pattern>/AddEstateError/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WrongChangeEstate</servlet-name>
+        <jsp-file>/real_estates/WrongChangeEstate.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WrongChangeEstate</servlet-name>
+        <url-pattern>/ChangeEstateError/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>ChangeEstate</servlet-name>
         <jsp-file>/real_estates/changeEstate.jsp</jsp-file>
     </servlet>
@@ -212,6 +230,8 @@
         <servlet-name>ChangeEstate</servlet-name>
         <url-pattern>/ChangeEstate/*</url-pattern>
     </servlet-mapping>
+
+
 
     <error-page>
         <error-code>404</error-code>

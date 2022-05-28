@@ -23,6 +23,7 @@ public class CharsetFilter implements Filter {
                          ServletResponse response, FilterChain next)
             throws IOException, ServletException {
         request.setCharacterEncoding(encoding);
+        response.setCharacterEncoding(encoding);
         next.doFilter(request, response);
     }
 

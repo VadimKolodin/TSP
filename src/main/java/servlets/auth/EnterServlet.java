@@ -25,7 +25,7 @@ public class EnterServlet extends HttpServlet {
                     if(password.hashCode()==user.getPassword()){
                         //все ок, берем айди и посылаем
                         req.getSession().setAttribute("user",user);
-                        resp.sendRedirect("userinfo");
+                        resp.sendRedirect("");
 
                     }
                 }

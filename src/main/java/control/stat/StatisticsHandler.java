@@ -147,7 +147,8 @@ public class StatisticsHandler extends ConnectionMaster {
             throw new NullPointerException("Такого пользователя больше не существует");
         }
         from = LocalDate.of(from.getYear(), from.getMonthValue(), 1);
-        to = LocalDate.of(to.getYear(), to.getMonthValue()+1, 1).minusDays(1);
+        to = to.plusMonths(1);
+        to = LocalDate.of(to.getYear(), to.getMonthValue(), 1).minusDays(1);
         int n =(int)MONTHS.between(from,to);
         List<DeltaValue> deltas = new ArrayList<DeltaValue>();
         for (int  i=0; i<=n;++i){
