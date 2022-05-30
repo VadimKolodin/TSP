@@ -18,11 +18,11 @@
 <%User user=(User)request.getSession().getAttribute("user");
     RealEstate estate= Controller.getInstance().getRealEstate(user.getUid(),Integer.parseInt(request.getParameter("eid")));
 %>
-<form action="ChangeEstateServlet?eid=<%=estate.getEid()%>"  method="post" class="user_info">
+<form action="ChangeEstateServlet?eid=<%=estate.getEid()%>"  method="post" class="user_info" enctype="multipart/form-data">
     <label for="type">Тип:</label><br>
-    <input type="text" id="type" name="typeEstate" value="<%=estate.getType()%>"><br>
+    <input type="text" id="type" name="type" value="<%=estate.getType()%>"><br>
     <label for="address">Адрес:</label><br>
-    <input type="text" id="address" name="addressEstate" value="<%=estate.getAddress()%>"><br>
+    <input type="text" id="address" name="address" value="<%=estate.getAddress()%>"><br>
 
     <%--<label for="status">Статус: </label><br>
     <%if (estate.getStatus().isSold()){%>

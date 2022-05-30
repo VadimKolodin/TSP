@@ -82,6 +82,9 @@ public class AddEstateServlet extends HttpServlet {
                     throw new IllegalArgumentException("Вы ввели некорректные данные.\nПоле \"Сумма\" должно быть больше 1");
                 }
                 LocalDate soldDate=LocalDate.parse(req.getParameter("soldDate"));
+                if(soldDate.isBefore(purchaseDate)){
+                    throw new IllegalArgumentException("Вы ввели некорректные данные. Дата продажи не может быть раньше даты покупки");
+                }
                 statusEstate = new EstateStatus(estate.getEid(), purchasePrice, purchaseDate,true,soldPrice,soldDate );
             }
             else{
@@ -92,7 +95,7 @@ public class AddEstateServlet extends HttpServlet {
             //Part file=req.getPart("file");
             //String filename=file.getSubmittedFileName();
             //Controller.getInstance().createEstateImage();
-            if(req.getPart("file")==null){
+            if(req.getPart("file").getSize()!=0){
                 Path path= Paths.get("cash");
                 if (!Files.exists(path)) {
                     Files.createDirectory(path);
