@@ -27,9 +27,9 @@
             <label for = "password2">Повторите пароль</label><br>
             <input type="password" id="password2" name="Password2" ><br>
             <label for="description">О себе</label><br>
-            <%if(info.getDesc()!=null&&!info.getDesc().isEmpty()){%>
+            <%if(info.getDesc()!=null){%>
             <!--не выводится описание -->
-            <textarea class="text_area" id="description" name="depiction" value="<%=info.getDesc()%>"></textarea><br>
+            <textarea class="text_area" id="description" name="depiction" ><%=info.getDesc()%></textarea><br>
             <%}else{%>
             <textarea class="text_area" id="description" name="depiction" placeholder="О себе..."></textarea><br>
             <%}%>

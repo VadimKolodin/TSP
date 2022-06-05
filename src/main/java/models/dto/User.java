@@ -30,7 +30,7 @@ public class User implements Serializable {
 
     public void addEstate(RealEstate estate, EstateStatus status){
         if (estate.getEid()!=status.getEid() || estate.getUsid()!=uid){
-            throw new IllegalArgumentException("Problems in IDs while adding estate");
+            throw new IllegalArgumentException("УИД не совпадают");
         }
         estate.setStatus(status);
         estates.put(estate.getEid(), estate);

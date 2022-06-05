@@ -129,28 +129,28 @@ public class Controller {
     }
     public void createEstate(RealEstate estate, EstateStatus status) throws SQLException {
         if (estate.getUsid()==null || estate.getAddress()==null || estate.getType()==null){
-            throw new IllegalArgumentException("Not all info was written");
+            throw new IllegalArgumentException("Заполнены не все поля");
         }
         if (status.getPurchasePrice()==null||status.getPurchaseDate()==null
         ||status.isSold()==null){
-            throw new IllegalArgumentException("Not all info was written");
+            throw new IllegalArgumentException("Заполнены не все поля");
         }
         if (status.isSold() &&(status.getSoldPrice()==null || status.getSoldDate()==null)){
-            throw new IllegalArgumentException("Not all info was written");
+            throw new IllegalArgumentException("Заполнены не все поля");
         }
         UploadService.createRealEstate(estate, status);
         model.getUser(estate.getUsid()).addEstate(estate, status);
     }
     public void createIncome(int usid,Income income) throws SQLException {
         if (income.getEid() == null|| income.getIdate() ==null||income.getName()==null||income.getValue()==null){
-            throw new IllegalArgumentException("Not all info was written");
+            throw new IllegalArgumentException("Заполнены не все поля");
         }
         UploadService.createIncome(income, model.getUser(usid).getEstate(income.getEid()).getStatus());
         model.getUser(usid).getEstate(income.getEid()).addIncome(income);
     }
     public void createOutcome(int usid,Outcome outcome) throws SQLException {
         if (outcome.getEid() == null|| outcome.getOdate() ==null||outcome.getName()==null||outcome.getValue()==null){
-            throw new IllegalArgumentException("Not all info was written");
+            throw new IllegalArgumentException("Заполнены не все поля");
         }
         UploadService.createOutcome(outcome, model.getUser(usid).getEstate(outcome.getEid()).getStatus());
         model.getUser(usid).getEstate(outcome.getEid()).addOutcome(outcome);
@@ -159,7 +159,7 @@ public class Controller {
     public void changeUser(User user, UserInfo info) throws SQLException {
         if (user != null && info != null) {
             if (user.getUid() != info.getUid()) {
-                throw new IllegalArgumentException("User ids do not match");
+                throw new IllegalArgumentException("УИД совпадают");
             }
         }
         UploadService.changeUser(user, info);
@@ -186,7 +186,7 @@ public class Controller {
     public void changeEstate(int usid, RealEstate estate, EstateStatus status) throws SQLException {
         if (status!=null && estate!=null){
             if(status.getEid() != estate.getEid()){
-                throw new IllegalArgumentException("Estate ids do not match");
+                throw new IllegalArgumentException("УИД недвижимости не совпадают");
             }
         }
         UploadService.changeRealEstate(estate, status);
@@ -228,7 +228,7 @@ public class Controller {
     }
     public void changeIncome(int usid, Income income) throws SQLException {
         if (income.getEid()==null){
-            throw new IllegalArgumentException("Not all info was written");
+            throw new IllegalArgumentException("Заполнены не все поля");
         }
         UploadService.changeIncome(income, model.getUser(usid).getEstate(income.getEid()).getStatus());
         Income oldIncome = model.getUser(usid).getEstate(income.getEid()).getIncome(income.getIid());
@@ -247,7 +247,7 @@ public class Controller {
     }
     public void changeOutcome(int usid, Outcome outcome) throws SQLException {
         if (outcome.getEid()==null){
-            throw new IllegalArgumentException("Not all info was written");
+            throw new IllegalArgumentException("Заполнены не все поля");
         }
         UploadService.changeOutcome(outcome, model.getUser(usid).getEstate(outcome.getEid()).getStatus());
         Outcome oldOutcome = model.getUser(usid).getEstate(outcome.getEid()).getOutcome(outcome.getOid());
@@ -289,7 +289,7 @@ public class Controller {
         if (period == StatisticsHandler.MONTH){
             return stat.getUserMonthStat(usid, from, to);
         }
-        throw new IllegalArgumentException("Wrong period");
+        throw new IllegalArgumentException("Неверный период");
     }
     public List<DeltaValue> getEstateStat(int usid, int eid, LocalDate from, LocalDate to, int period){
         if (period == StatisticsHandler.DAY){
@@ -298,7 +298,7 @@ public class Controller {
         if (period == StatisticsHandler.MONTH){
             return stat.getEstateMonthStat(usid, eid, from, to);
         }
-        throw new IllegalArgumentException("Wrong period");
+        throw new IllegalArgumentException("Неверный период");
     }
     public HashMap<String, Double> getUserTotal(int usid){
         return stat.getUserTotal(usid);

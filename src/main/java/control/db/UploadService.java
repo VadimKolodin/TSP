@@ -50,7 +50,7 @@ public class UploadService extends DbService{
             info.setUid(uid);
             for (String login : userDao.getAllLogins()) {
                 if (user.getLogin().equals(login)) {
-                    throw new IllegalArgumentException("Such a login already exists");
+                    throw new IllegalArgumentException("Такой логин уже существует");
                 }
             }
             PreparedStatement prUser = userDao.create(user);
@@ -64,19 +64,19 @@ public class UploadService extends DbService{
         PreparedStatement prInfo = null;
         if (user != null && info != null) {
             if (user.getUid() != info.getUid()) {
-                throw new IllegalArgumentException(" user uid and info uid do not match");
+                throw new IllegalArgumentException(" УИД пользователя не совпадают");
             }
         }
 
         if (user != null) {
             if (user.getUid() == null) {
-                throw new IllegalArgumentException("User id cannot be null");
+                throw new IllegalArgumentException("УИД пользователя не может быть null");
             }
             prUser = userDao.update(user);
         }
         if (info != null) {
             if (info.getUid() == null) {
-                throw new IllegalArgumentException("UserInfo id cannot be null");
+                throw new IllegalArgumentException("УИД информации о пользователе не может быть null");
             }
             prInfo = userDao.updateUserInfo(info);
         }
@@ -93,10 +93,10 @@ public class UploadService extends DbService{
     public static void createRealEstate(RealEstate estate, EstateStatus status) throws SQLException {
 
         if (estate == null) {
-            throw new IllegalArgumentException("realEstate object cannot be null");
+            throw new IllegalArgumentException("Объект недвижимости не может быть null");
         }
         if (status == null) {
-            throw new IllegalArgumentException("EstateStatus cannot be null");
+            throw new IllegalArgumentException("Статус недвижимости не может быть null");
         }
         int eid = estateDao.getNewId();
         estate.setEid(eid);
@@ -110,19 +110,19 @@ public class UploadService extends DbService{
     PreparedStatement prStatus = null;
         if (estate != null && status != null) {
             if (estate.getEid() != status.getEid()) {
-                throw new IllegalArgumentException("Estate ids do not match");
+                throw new IllegalArgumentException("УИД недвижимостей не совпадают");
             }
         }
 
         if (estate != null) {
             if (estate.getEid() == null) {
-                throw new IllegalArgumentException("Estate id is null");
+                throw new IllegalArgumentException("УИД недвижимости не может быть null");
             }
             prEstate = estateDao.update(estate);
         }
         if (status != null) {
             if (status.getEid() == null) {
-                throw new IllegalArgumentException("EstateStatus id is null");
+                throw new IllegalArgumentException("УИД статуса недвижимости не может быть null");
             }
             prStatus = estateDao.updateEstateStatus(status);
         }
@@ -146,12 +146,12 @@ public class UploadService extends DbService{
         if (parentEstate.isSold()){
             if (income.getIdate().isAfter(parentEstate.getSoldDate())||
             income.getIdate().isBefore(parentEstate.getPurchaseDate())){
-                throw new IllegalArgumentException("Income date must be between purchase and sold dates");
+                throw new IllegalArgumentException("Дата дохода должна быть между датами покупки и продажи");
             }
         } else {
             if (income.getIdate().isBefore(parentEstate.getPurchaseDate())||
                     income.getIdate().isAfter(LocalDate.now())){
-                throw new IllegalArgumentException("Income date must be after purchase date and not in the future");
+                throw new IllegalArgumentException("Дата дохода не может быть раньше покупки недвижимости, а также не может быть в будущем");
             }
         }
         int iid = incomeDao.getNewId();
@@ -168,12 +168,12 @@ public class UploadService extends DbService{
             if (parentEstate.isSold()){
                 if (income.getIdate().isAfter(parentEstate.getSoldDate())||
                         income.getIdate().isBefore(parentEstate.getPurchaseDate())){
-                    throw new IllegalArgumentException("Income date must be between purchase and sold dates");
+                    throw new IllegalArgumentException("Дата дохода должна быть между датами покупки и продажи");
                 }
             } else {
                 if (income.getIdate().isBefore(parentEstate.getPurchaseDate()) ||
                 income.getIdate().isAfter(LocalDate.now())){
-                    throw new IllegalArgumentException("Income date must be after purchase date and not in the future");
+                    throw new IllegalArgumentException("Дата дохода не может быть раньше покупки недвижимости, а также не может быть в будущем");
                 }
             }
         }
@@ -190,12 +190,12 @@ public class UploadService extends DbService{
         if (parentEstate.isSold()){
             if (outcome.getOdate().isAfter(parentEstate.getSoldDate())||
                     outcome.getOdate().isBefore(parentEstate.getPurchaseDate())){
-                throw new IllegalArgumentException("Outcome date must be between purchase and sold dates");
+                throw new IllegalArgumentException("Дата расхода должна быть между датами покупки и продажи");
             }
         } else {
             if (outcome.getOdate().isBefore(parentEstate.getPurchaseDate())||
                     outcome.getOdate().isAfter(LocalDate.now())){
-                throw new IllegalArgumentException("Outcome date must be after purchase date and not in the future");
+                throw new IllegalArgumentException("Дата расхода не может быть раньше покупки недвижимости, а также не может быть в будущем");
             }
         }
 
@@ -213,12 +213,12 @@ public class UploadService extends DbService{
             if (parentEstate.isSold()){
                 if (outcome.getOdate().isAfter(parentEstate.getSoldDate())||
                         outcome.getOdate().isBefore(parentEstate.getPurchaseDate())){
-                    throw new IllegalArgumentException("Outcome date must be between purchase and sold dates");
+                    throw new IllegalArgumentException("Дата расхода должна быть между датами покупки и продажи");
                 }
             } else {
                 if (outcome.getOdate().isBefore(parentEstate.getPurchaseDate())||
                         outcome.getOdate().isAfter(LocalDate.now())){
-                    throw new IllegalArgumentException("Outcome date must be after purchase date and not in the future");
+                    throw new IllegalArgumentException("Дата расхода не может быть раньше покупки недвижимости, а также не может быть в будущем");
                 }
             }
         }

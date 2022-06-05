@@ -9,7 +9,7 @@
 <html>
 <head>
     <style><%@include file="/style.css"%></style>
-    <title>Изменение недвижимости</title>
+    <title>Добавление недвижимости</title>
 </head>
 <body>
 <jsp:include page="/menu/menu.jsp"></jsp:include>
